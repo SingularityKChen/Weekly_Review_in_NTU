@@ -188,7 +188,7 @@ class Balabala(x: Int, y: Int){
 
 [slides and video](https://slideslive.com/38921492/efficient-processing-of-deep-neural-network-from-algorithms-to-hardware-architectures)
 
-[OneNote Link](https://stduestceducn-my.sharepoint.com/:o:/g/personal/2016340103018_std_uestc_edu_cn/EsIjg9LqZotLoNfN22Gr0LkBXxnd-EsiCQKqawZVfCdZqg?e=SMNjeg)
+OneNote
 
 # 2019/12/09-15
 
