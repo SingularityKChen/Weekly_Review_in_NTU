@@ -1,42 +1,43 @@
 # Table of Contents
+
 <!-- MarkdownTOC -->
 
 1. [2019/12/16-22](#20191216-22)
-  1. [Functional Programming Principles in Scala](#functional-programming-principles-in-scala)
-    1. [Week1](#week1)
-    1. [Week2](#week2)
-  1. [Efficient Processing of Deep Neural Network: from Algorithms to Hardware Architectures](#efficient-processing-of-deep-neural-network-from-algorithms-to-hardware-architectures)
+	1. [Functional Programming Principles in Scala](#functional-programming-principles-in-scala)
+		1. [Week1](#week1)
+		1. [Week2](#week2)
+	1. [Efficient Processing of Deep Neural Network: from Algorithms to Hardware Architectures](#efficient-processing-of-deep-neural-network-from-algorithms-to-hardware-architectures)
 1. [2019/12/09-15](#20191209-15)
-  1. [Git Command](#git-command)
-    1. [the work flow](#the-work-flow)
-    1. [Build a git project](#build-a-git-project)
-  1. [Matrix Sum Accelerator](#matrix-sum-accelerator)
-  1. [Chisel3 Syntax](#chisel3-syntax)
-  1. [\(Linux\) C Syntax](#linux-c-syntax)
-    1. [`asm volatile`](#asm-volatile)
-    1. [create a C matrix with 2-D Array](#create-a-c-matrix-with-2-d-array)
-    1. [Pointer and address access](#pointer-and-address-access)
-  1. [RISC-V SPEC](#risc-v-spec)
-  1. [Chipyard](#chipyard)
-    1. [`SHA3`](#sha3)
-    1. [`Hwacha`](#hwacha)
-  1. [`RoCC` and extension instruction](#rocc-and-extension-instruction)
-    1. [`RoCC` component](#rocc-component)
-    1. [extension instruction with `RoCC`](#extension-instruction-with-rocc)
-    1. [`HellaCache`](#hellacache)
-  1. [Chisel-Tester2](#chisel-tester2)
-  1. [Hammer](#hammer)
-  1. [Computer Architecture](#computer-architecture)
-    1. [Memory Fence and Memory Barrier](#memory-fence-and-memory-barrier)
-    1. [Page Table Walk](#page-table-walk)
-    1. [Translation Lookaside Buffer](#translation-lookaside-buffer)
-    1. [Cache Hierarchy](#cache-hierarchy)
-    1. [Memory Read \(Synchronous and Asynchronous\)](#memory-read-synchronous-and-asynchronous)
-  1. [Some Trouble](#some-trouble)
-    1. [`psutil`](#psutil)
-    1. [Import classes into `IntelliJ IDEA`](#import-classes-into-intellij-idea)
-    1. [Import reliance into `sbt` project](#import-reliance-into-sbt-project)
-    1. [Can not find the lvy local lib](#can-not-find-the-lvy-local-lib)
+	1. [Git Command](#git-command)
+		1. [the work flow](#the-work-flow)
+		1. [Build a git project](#build-a-git-project)
+	1. [Matrix Sum Accelerator](#matrix-sum-accelerator)
+	1. [Chisel3 Syntax](#chisel3-syntax)
+	1. [\(Linux\) C Syntax](#linux-c-syntax)
+		1. [`asm volatile`](#asm-volatile)
+		1. [create a C matrix with 2-D Array](#create-a-c-matrix-with-2-d-array)
+		1. [Pointer and address access](#pointer-and-address-access)
+	1. [RISC-V SPEC](#risc-v-spec)
+	1. [Chipyard](#chipyard)
+		1. [`SHA3`](#sha3)
+		1. [`Hwacha`](#hwacha)
+	1. [`RoCC` and extension instruction](#rocc-and-extension-instruction)
+		1. [`RoCC` component](#rocc-component)
+		1. [extension instruction with `RoCC`](#extension-instruction-with-rocc)
+		1. [`HellaCache`](#hellacache)
+	1. [Chisel-Tester2](#chisel-tester2)
+	1. [Hammer](#hammer)
+	1. [Computer Architecture](#computer-architecture)
+		1. [Memory Fence and Memory Barrier](#memory-fence-and-memory-barrier)
+		1. [Page Table Walk](#page-table-walk)
+		1. [Translation Lookaside Buffer](#translation-lookaside-buffer)
+		1. [Cache Hierarchy](#cache-hierarchy)
+		1. [Memory Read \(Synchronous and Asynchronous\)](#memory-read-synchronous-and-asynchronous)
+	1. [Some Trouble](#some-trouble)
+		1. [`psutil`](#psutil)
+		1. [Import classes into `IntelliJ IDEA`](#import-classes-into-intellij-idea)
+		1. [Import reliance into `sbt` project](#import-reliance-into-sbt-project)
+		1. [Can not find the lvy local lib](#can-not-find-the-lvy-local-lib)
 
 <!-- /MarkdownTOC -->
 
@@ -175,7 +176,7 @@ val x = sqrt(y)
 assert(x >= 0)
 
 class Balabala(x: Int, y: Int){
-    require(y != 0, "y must be nonzero")
+		require(y != 0, "y must be nonzero")
 }
 ```
 
@@ -513,8 +514,8 @@ By accidently, I included highest file (`generator` in this case) and it succeed
 
 ```scala
 lazy val matrixsum = conditionalDependsOn(project in file("/home/singularity/chipyard/generators/matrixsum"))
-  .dependsOn(rocketchip, chisel_testers, sifive_blocks, sifive_cache, utilities, midasTargetUtils)
-  .settings(commonSettings)
+	.dependsOn(rocketchip, chisel_testers, sifive_blocks, sifive_cache, utilities, midasTargetUtils)
+	.settings(commonSettings)
 ```
 
 But that's works on the top module, the `dependson` must be a sub file of the current `build.sbt`  directory.
@@ -528,7 +529,7 @@ Haven't solved yet.
 adder.compileClasspath 
 Resolution failed for 1 modules:
 --------------------------------------------
-  edu.berkeley.cs:treadle_2.12:1.2-SNAPSHOT 
+	edu.berkeley.cs:treadle_2.12:1.2-SNAPSHOT 
 	not found: /home/singularity/.ivy2/local/edu.berkeley.cs/treadle_2.12/1.2-SNAPSHOT/ivys/ivy.xml
 	not found: https://repo1.maven.org/maven2/edu/berkeley/cs/treadle_2.12/1.2-SNAPSHOT/treadle_2.12-1.2-SNAPSHOT.pom
 	not found: https://oss.sonatype.org/content/repositories/releases/edu/berkeley/cs/treadle_2.12/1.2-SNAPSHOT/treadle_2.12-1.2-SNAPSHOT.pom
