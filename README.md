@@ -3,59 +3,62 @@
 <!-- MarkdownTOC -->
 
 1. [2019/12/23-29](#20191223-29)
-    1. [Efficient Processing of Deep Neural Networks: A Tutorial and Survey](#efficient-processing-of-deep-neural-networks-a-tutorial-and-survey)
-        1. [Creating A System for Efficient DNN Processing](#creating-a-system-for-efficient-dnn-processing)
-        1. [Temporal Architectures and Spatial Architectures](#temporal-architectures-and-spatial-architectures)
-        1. [Near-Data Processing](#near-data-processing)
-        1. [Co-Design of DNN Models And Hardware](#co-design-of-dnn-models-and-hardware)
-        1. [Benchmarking Metrics for DNN Evaluation and Comparison](#benchmarking-metrics-for-dnn-evaluation-and-comparison)
-    1. [Eyeriss v2: A Flexible and High-Performance Accelerator for Emerging Deep Neural Networks](#eyeriss-v2-a-flexible-and-high-performance-accelerator-for-emerging-deep-neural-networks)
-        1. [Changes in Performance and Flexibility](#changes-in-performance-and-flexibility)
-        1. [Eyexam](#eyexam)
-        1. [Flexible Dataflow](#flexible-dataflow)
-        1. [Flexible and Scalable NoC](#flexible-and-scalable-noc)
-    1. [Eyeriss: A Spatial Architecture for Energy-Efficient Dataflow for Convolutional Neural Networks](#eyeriss-a-spatial-architecture-for-energy-efficient-dataflow-for-convolutional-neural-networks)
-        1. [Framework for Energy Efficiency Analysis](#framework-for-energy-efficiency-analysis)
-    1. [Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks](#eyeriss-an-energy-efficient-reconfigurable-accelerator-for-deep-convolutional-neural-networks)
-        1. [Main Features of Eyeriss](#main-features-of-eyeriss)
-        1. [System Control and Configuration](#system-control-and-configuration)
-        1. [Exploit Data Statistics](#exploit-data-statistics)
+	1. [Efficient Processing of Deep Neural Networks: A Tutorial and Survey](#efficient-processing-of-deep-neural-networks-a-tutorial-and-survey)
+		1. [Creating A System for Efficient DNN Processing](#creating-a-system-for-efficient-dnn-processing)
+		1. [Temporal Architectures and Spatial Architectures](#temporal-architectures-and-spatial-architectures)
+		1. [Near-Data Processing](#near-data-processing)
+		1. [Co-Design of DNN Models And Hardware](#co-design-of-dnn-models-and-hardware)
+		1. [Benchmarking Metrics for DNN Evaluation and Comparison](#benchmarking-metrics-for-dnn-evaluation-and-comparison)
+	1. [Eyeriss v2: A Flexible and High-Performance Accelerator for Emerging Deep Neural Networks](#eyeriss-v2-a-flexible-and-high-performance-accelerator-for-emerging-deep-neural-networks)
+		1. [Changes in Performance and Flexibility](#changes-in-performance-and-flexibility)
+		1. [Eyexam](#eyexam)
+		1. [Flexible Dataflow](#flexible-dataflow)
+		1. [Flexible and Scalable NoC](#flexible-and-scalable-noc)
+	1. [Eyeriss: A Spatial Architecture for Energy-Efficient Dataflow for Convolutional Neural Networks](#eyeriss-a-spatial-architecture-for-energy-efficient-dataflow-for-convolutional-neural-networks)
+		1. [Framework for Energy Efficiency Analysis](#framework-for-energy-efficiency-analysis)
+	1. [Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks](#eyeriss-an-energy-efficient-reconfigurable-accelerator-for-deep-convolutional-neural-networks)
+		1. [Main Features of Eyeriss](#main-features-of-eyeriss)
+		1. [System Control and Configuration](#system-control-and-configuration)
+		1. [Exploit Data Statistics](#exploit-data-statistics)
+	1. [Some Troubles](#some-troubles)
+		1. [Scalac_2.12.4:4.2.3](#scalac_2124423)
+		1. [No found: firrlt object](#no-found-firrlt-object)
 1. [2019/12/16-22](#20191216-22)
-    1. [Functional Programming Principles in Scala](#functional-programming-principles-in-scala)
-        1. [Week1](#week1)
-        1. [Week2](#week2)
-    1. [Efficient Processing of Deep Neural Network: from Algorithms to Hardware Architectures](#efficient-processing-of-deep-neural-network-from-algorithms-to-hardware-architectures)
+	1. [Functional Programming Principles in Scala](#functional-programming-principles-in-scala)
+		1. [Week1](#week1)
+		1. [Week2](#week2)
+	1. [Efficient Processing of Deep Neural Network: from Algorithms to Hardware Architectures](#efficient-processing-of-deep-neural-network-from-algorithms-to-hardware-architectures)
 1. [2019/12/09-15](#20191209-15)
-    1. [Git Command](#git-command)
-        1. [the work flow](#the-work-flow)
-        1. [Build a git project](#build-a-git-project)
-    1. [Matrix Sum Accelerator](#matrix-sum-accelerator)
-    1. [Chisel3 Syntax](#chisel3-syntax)
-    1. [\(Linux\) C Syntax](#linux-c-syntax)
-        1. [`asm volatile`](#asm-volatile)
-        1. [create a C matrix with 2-D Array](#create-a-c-matrix-with-2-d-array)
-        1. [Pointer and address access](#pointer-and-address-access)
-    1. [RISC-V SPEC](#risc-v-spec)
-    1. [Chipyard](#chipyard)
-        1. [`SHA3`](#sha3)
-        1. [`Hwacha`](#hwacha)
-    1. [`RoCC` and extension instruction](#rocc-and-extension-instruction)
-        1. [`RoCC` component](#rocc-component)
-        1. [extension instruction with `RoCC`](#extension-instruction-with-rocc)
-        1. [`HellaCache`](#hellacache)
-    1. [Chisel-Tester2](#chisel-tester2)
-    1. [Hammer](#hammer)
-    1. [Computer Architecture](#computer-architecture)
-        1. [Memory Fence and Memory Barrier](#memory-fence-and-memory-barrier)
-        1. [Page Table Walk](#page-table-walk)
-        1. [Translation Lookaside Buffer](#translation-lookaside-buffer)
-        1. [Cache Hierarchy](#cache-hierarchy)
-        1. [Memory Read \(Synchronous and Asynchronous\)](#memory-read-synchronous-and-asynchronous)
-    1. [Some Trouble](#some-trouble)
-        1. [`psutil`](#psutil)
-        1. [Import classes into `IntelliJ IDEA`](#import-classes-into-intellij-idea)
-        1. [Import reliance into `sbt` project](#import-reliance-into-sbt-project)
-        1. [Can not find the lvy local lib](#can-not-find-the-lvy-local-lib)
+	1. [Git Command](#git-command)
+		1. [the workflow](#the-workflow)
+		1. [Build a git project](#build-a-git-project)
+	1. [Matrix Sum Accelerator](#matrix-sum-accelerator)
+	1. [Chisel3 Syntax](#chisel3-syntax)
+	1. [\(Linux\) C Syntax](#linux-c-syntax)
+		1. [`asm volatile`](#asm-volatile)
+		1. [create a C matrix with 2-D Array](#create-a-c-matrix-with-2-d-array)
+		1. [Pointer and address access](#pointer-and-address-access)
+	1. [RISC-V SPEC](#risc-v-spec)
+	1. [Chipyard](#chipyard)
+		1. [`SHA3`](#sha3)
+		1. [`Hwacha`](#hwacha)
+	1. [`RoCC` and extension instruction](#rocc-and-extension-instruction)
+		1. [`RoCC` component](#rocc-component)
+		1. [extension instruction with `RoCC`](#extension-instruction-with-rocc)
+		1. [`HellaCache`](#hellacache)
+	1. [Chisel-Tester2](#chisel-tester2)
+	1. [Hammer](#hammer)
+	1. [Computer Architecture](#computer-architecture)
+		1. [Memory Fence and Memory Barrier](#memory-fence-and-memory-barrier)
+		1. [Page Table Walk](#page-table-walk)
+		1. [Translation Lookaside Buffer](#translation-lookaside-buffer)
+		1. [Cache Hierarchy](#cache-hierarchy)
+		1. [Memory Read \(Synchronous and Asynchronous\)](#memory-read-synchronous-and-asynchronous)
+	1. [Some Trouble](#some-trouble)
+		1. [`psutil`](#psutil)
+		1. [Import classes into `IntelliJ IDEA`](#import-classes-into-intellij-idea)
+		1. [Import reliance into `sbt` project](#import-reliance-into-sbt-project)
+		1. [Can not find the lvy local lib](#can-not-find-the-lvy-local-lib)
 
 <!-- /MarkdownTOC -->
 
@@ -64,6 +67,8 @@
 # 2019/12/23-29
 
 Last week, I read four Journal Articles related to Deep Learning Accelerator Implementation. Thanks to Shien's recommendation, I learned a lot from these articles as I have a more vivid knowledge of DLA with several in-deep views in some components. 
+
+When I reviewed these four articles, I found that even though I know how to design the hardware architecture, I may not know how to run some DNN models with the accelerator. Letty told me that they need the help of some compilers to translate the models to instructions, but I don't think I could optimize the compiler to compile the program into my custom instructions. So maybe I would not run a complex model if I can not load instructions manually.
 
 And next week, I am supposed to read some papers which describe the method to compress the different types of data in CNN, i.e., QNN, to decrease the movements of data and the storage requirements of its four levels of the memory hierarchy. Besides, Chen Peng has introduced me thinking that routers can also be regards as one of the calculation components in NoC, so maybe the next few weeks, I will improve the dataflow of Eyeriss with this kind of pattern.
 
@@ -78,10 +83,10 @@ This article focuses on:
 
 + Applications and specific computations requirements
 + Understand and balance the important system metrics
-  + Accuracy
-  + Energy
-  + Throughput
-  + Hardware cost
+	+ Accuracy
+	+ Energy
+	+ Throughput
+	+ Hardware cost
 + Optimize DNN processing
 + Joint hardware/software co-design
 
@@ -172,8 +177,8 @@ Reduce the precision of operations and operands:
 + fixed point instead of floating-point
 + reducing the bit-width: uniform quantization
 + nonuniform quantization: map data to a smaller set of quantization levels
-  + log quantization
-  + learned quantization
+	+ log quantization
+	+ learned quantization
 + weight sharing
 
 #### Reduced Number of Operations and Model Size
@@ -199,14 +204,14 @@ Reduce the number of operations and model size:
 + The latency and throughput
 + The cost of the chip: the size and type of memory, the amount of control logic
 + For an FPGA, 
-  + the specific device
-  + the utilization of resources such as:
-    + DSP
-    + BRAM
-    + LUT
-    + FF
-  + performance density
-    + GOPs/slice
+	+ the specific device
+	+ the utilization of resources such as:
+		+ DSP
+		+ BRAM
+		+ LUT
+		+ FF
+	+ performance density
+		+ GOPs/slice
 
 ## Eyeriss v2: A Flexible and High-Performance Accelerator for Emerging Deep Neural Networks
 
@@ -220,18 +225,18 @@ This article describes:
 #### Two Bad Ways in Widely Varying Data Reuse
 
 + depend on data reuse in certain data dimensions
-  + the spatial accumulation array architecture relies on both output and input channels;
-  + the temporal accumulation array architecture relies on another set of data dimensions;
+	+ the spatial accumulation array architecture relies on both output and input channels;
+	+ the temporal accumulation array architecture relies on another set of data dimensions;
 + lower data reuse need a higher data bandwidth
 
 #### To Build a Truly Flexible DNN Processor
 
 + the dataflow relies on certain data dimensions for data reuse
-  + low utilization of the parallelism when those data dimensions diminish
+	+ low utilization of the parallelism when those data dimensions diminish
 + the NoC and its corresponding memory hierarchy
-  + high bandwidth and low spatial data reuse;
-  + low bandwidth and high spatial data reuse scenarios;
-  + instead of being adaptive to the specific condition of the workload;
+	+ high bandwidth and low spatial data reuse;
+	+ low bandwidth and high spatial data reuse scenarios;
+	+ instead of being adaptive to the specific condition of the workload;
 
 ### Eyexam
 
@@ -247,46 +252,46 @@ This is a example dataflow for a 1D CONV:
 
 int main()
 {
-  int R2, R1, R0, E2, E1, E0;
-  // R0, R1, R2 related to filter
-  R2 = 2;//chnl of filter, C, sum of one chnl ofmap
-  R1 = 3;//height of filter, R, psum of one row ofmap
-  R0 = 4;//width of filter, S, ppsum of one ofmap
-  // E0, E1, E2 related to ofmap
-  E2 = 2;//chnl of ofmap or number of filters, M, sums in different chnl ofmaps
-  E1 = 4;//height of ofmap, E, psum of one chnl ofmap
-  E0 = 5;//width of ofmap, F, ppsum of one row ofmap
-  int inx_o, inx_i, inx_w;
-  for (int e2 = 0; e2 < E2; e2++) {
-    for (int r2 = 0; r2 < R2; r2++) {
-      for (int e1 = 0; e1 < E1; e1++) {
-        for (int r1 = 0; r1 < R1; r1++) {
-          for (int e0 = 0; e0 < E0; e0++) {
-            for (int r0 = 0; r0 < R0; r0++) {
-              inx_o = e2*E1*E0+e1*E0+e0;
-              inx_i = e2*E1*E0+e1*E0+e0 + r2*R1*R0+r1*R0+r0;
-              inx_w = r2*R1*R0+r1*R0+r0;
-              printf("O[%d] += I[%d] * W[%d]\t", inx_o, inx_i, inx_w);
-              //printf("O[e2*E1*E0+e1*E0+e0] = O[%d*E1*E0+%d*E0+%d]\n", e2, e1, e0);
-              /* code */
-            }
-            /* code */
-            //printf("----------- r0 for loop finished -----------\n");
-            printf("\n");
-          }
-          /* code */
-          printf("*********** e0 for loop finished ***********\n");
-        }
-        /* code */
-        printf("+++++++++++ r1 for loop finished +++++++++++\n");
-      }
-      /* code */
-      printf("=========== e1 for loop finished ===========\n");
-    }
-    /* code */
-    printf("@@@@@@@@@@@ r2 for loop finished @@@@@@@@@@@\n");
-  }
-  return 0;
+	int R2, R1, R0, E2, E1, E0;
+	// R0, R1, R2 related to filter
+	R2 = 2;//chnl of filter, C, sum of one chnl ofmap
+	R1 = 3;//height of filter, R, psum of one row ofmap
+	R0 = 4;//width of filter, S, ppsum of one ofmap
+	// E0, E1, E2 related to ofmap
+	E2 = 2;//chnl of ofmap or number of filters, M, sums in different chnl ofmaps
+	E1 = 4;//height of ofmap, E, psum of one chnl ofmap
+	E0 = 5;//width of ofmap, F, ppsum of one row ofmap
+	int inx_o, inx_i, inx_w;
+	for (int e2 = 0; e2 < E2; e2++) {
+		for (int r2 = 0; r2 < R2; r2++) {
+			for (int e1 = 0; e1 < E1; e1++) {
+				for (int r1 = 0; r1 < R1; r1++) {
+					for (int e0 = 0; e0 < E0; e0++) {
+						for (int r0 = 0; r0 < R0; r0++) {
+							inx_o = e2*E1*E0+e1*E0+e0;
+							inx_i = e2*E1*E0+e1*E0+e0 + r2*R1*R0+r1*R0+r0;
+							inx_w = r2*R1*R0+r1*R0+r0;
+							printf("O[%d] += I[%d] * W[%d]\t", inx_o, inx_i, inx_w);
+							//printf("O[e2*E1*E0+e1*E0+e0] = O[%d*E1*E0+%d*E0+%d]\n", e2, e1, e0);
+							/* code */
+						}
+						/* code */
+						//printf("----------- r0 for loop finished -----------\n");
+						printf("\n");
+					}
+					/* code */
+					printf("*********** e0 for loop finished ***********\n");
+				}
+				/* code */
+				printf("+++++++++++ r1 for loop finished +++++++++++\n");
+			}
+			/* code */
+			printf("=========== e1 for loop finished ===========\n");
+		}
+		/* code */
+		printf("@@@@@@@@@@@ r2 for loop finished @@@@@@@@@@@\n");
+	}
+	return 0;
 }
 
 ```
@@ -300,8 +305,8 @@ int main()
 + layer shape and size: the number of `MAC`s in the layer
 + dataflow: the maximum parallelism of the dataflow
 + number of `PE`s: the theoretical peak performance. Two shape fragmentation:
-  + spatial mapping fragmentation: `R` or `R1` is smaller than the number of `PE`s => some are completely idle
-  + temporal mapping fragmentation: `R` is not an integer multiple of `PE`s => some are not always active
+	+ spatial mapping fragmentation: `R` or `R1` is smaller than the number of `PE`s => some are completely idle
+	+ temporal mapping fragmentation: `R` is not an integer multiple of `PE`s => some are not always active
 + physical dimensions of the `PE` array: the run-time utilization of `PE`s due to shape fragmentation for each dimension
 + storage capacity: reduce the number of active `PE`s due to storage of intermediate data. e.g., limited storage for `psum`s => the limited number of weights be processed in parallel => limited number of active `PE`s that can operate in parallel
 + data bandwidth: insufficient average bandwidth to active `PE`s. The performance will be bandwidth-limited when the operational intensity is lower than the inflection point
@@ -423,10 +428,10 @@ This article introduces the way to reduce the cost of data movement by exploitin
 ### Main Features of Eyeriss
 
 + A four-level memory hierarchy. Data movement can exploit low-cost levels:
-  + the PE scratch pads
-  + the inter-PE communication
-  + the large on-chip global buffer (GLB)
-  + the off-chip DRAM.
+	+ the PE scratch pads
+	+ the inter-PE communication
+	+ the large on-chip global buffer (GLB)
+	+ the off-chip DRAM.
 + A CNN dataflow, called Row Stationary (RS), that reconfigures the spatial architecture to map the computation of a given CNN shape and optimize for the best energy efficiency.
 + A network-on-chip (NoC) architecture that uses both multicast and point-to-point single-cycle data delivery to support the RS dataflow.
 + Run-length compression (RLC) and PE data gating that exploits the statistics of zero data in CNNs to further improve energy efficiency.
@@ -440,18 +445,18 @@ This is the architecture of Eyeriss system:
 The accelerator has two levels of control hierarchy. 
 
 + The top-level control coordinates:
-  + traffic between the off-chip DRAM and the GLB through the asynchronous interface;
-  + traffic between the GLB and the PE array through the NoC;
-  + operation of the RLC CODEC and ReLU module. 
+	+ traffic between the off-chip DRAM and the GLB through the asynchronous interface;
+	+ traffic between the GLB and the PE array through the NoC;
+	+ operation of the RLC CODEC and ReLU module. 
 + The lower-level control consists of control logic in each PE, which runs independently of each other.
 
 The size:
 
 + spad capacity depends only on the filter row size (S)
-  but not the ifmap row size (W), and is equal to:
-  + S for a row of filter weights; 
-  + S for a sliding window of ifmap values;
-  + 1 for the psum accumulation.
+	but not the ifmap row size (W), and is equal to:
+	+ S for a row of filter weights; 
+	+ S for a sliding window of ifmap values;
+	+ 1 for the psum accumulation.
 
 + the height and the width of the PE set are equal to the number of filter rows (R) and ofmap rows (E), respectively.
 
@@ -475,9 +480,9 @@ RLC is used in Eyeriss to exploit the zeros in fmaps and save DRAM bandwidth.
 Requirements of the NoC architecture:
 
 + support the data delivery patterns used in the RS dataflow; should be taken care of:
-  + different convolution strides (U) result in the ifmap delivery, skipping certain rows in the array;
-  + a set is divided into segments that are mapped onto different parts of the PE array;
-  + multiple sets are mapped onto the array simultaneously and different data is required for each set
+	+ different convolution strides (U) result in the ifmap delivery, skipping certain rows in the array;
+	+ a set is divided into segments that are mapped onto different parts of the PE array;
+	+ multiple sets are mapped onto the array simultaneously and different data is required for each set
 + leverage the data reuse achieved by the RS dataflow to further improve energy efficiency;
 + provide enough bandwidth for data delivery in order to support the highly parallel processing in the PE array.
 
@@ -496,6 +501,58 @@ The datapath is pipelined into three stages: one stage for spad access, and the 
 An extra 12-b Zero Buffer is used to record the position of zeros in the ifmap spad. If a zero ifmap value is detected from the zero buffer, the gating logic will disable the read of the filter spad and prevent the MAC datapath from switching.
 
 ![PE architecture](https://images-cdn.shimo.im/MPBbaUOFLNEcqibp/image.png)
+
+## Some Troubles
+
+### Scalac_2.12.4:4.2.3
+
+I tried run verilator simulation with default command
+
+```bash
+make CONFIG=SmallBoomAndRocketConfig BINARY=mt-vvadd.riscv run-binary
+```
+
+But got the following error:
+
+```
+[warn] 	Note: Unresolved dependencies path:
+[error] sbt.librarymanagement.ResolveException: Error downloading org.scalameta:semanticdb-scalac_2.12.4:4.2.3
+[error]   Not found
+[error]   Not found
+[error]   not found: /home/singularity/.ivy2/local/org.scalameta/semanticdb-scalac_2.12.4/4.2.3/ivys/ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/semanticdb-scalac_2.12.4/4.2.3/semanticdb-scalac_2.12.4-4.2.3.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/snapshots/org/scalameta/semanticdb-scalac_2.12.4/4.2.3/semanticdb-scalac_2.12.4-4.2.3.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/semanticdb-scalac_2.12.4/4.2.3/semanticdb-scalac_2.12.4-4.2.3.pom
+```
+
+When I got into the website it mentioned `https://repo1.maven.org/maven2/org/scalameta/` I could only found the version `4.2.3` in `https://repo1.maven.org/maven2/org/scalameta/semanticdb-scalac_2.13.1/4.2.3/`.
+
+Firstly, I tried to change the Scala version to `2.13.1` but occurred some syntax errors when I tried to `sbt publishLocal` for `firrtl`, so I had to give up that way.
+
+Then, I wanted to find why the default Scala version is `2.12.4` though I had set that to `2.12.1` in `build.sbt`. Then I found the default set was in `variables.mk:143`, so I changed it to `2.12.10`, which is the same to that in `firrtl`.
+
+### No found: firrlt object
+
+After that, I countered with the old trouble: `not found: object firrtl`
+
+```
+[error] /home/singularity/chipyard/tools/chisel3/src/main/scala/chisel3/ChiselExecutionOptions.scala:7:8: not found: object firrtl
+[error] import firrtl.{AnnotationSeq, ExecutionOptionsManager, ComposableOptions}
+[error]        ^
+[error] /home/singularity/chipyard/tools/chisel3/src/main/scala/chisel3/ChiselExecutionOptions.scala:21:44: not found: type ComposableOptions
+```
+
+I tried to re-do `publishLocal` in almost all components in `chipyard/tools` but failed.
+
+Then, Jiuyang told me that I was supposed to `sbt publishLocal` then `sbt update` in these three directories in order:
+
++ firrtl
++ chisel3
++ rocket-chip
+
+But while I tried to `publishLocal` under rocket-chip, I found the version of firrtl it need was 1.2 while I only had 1.3 version. So I re-do this flow with a correctness of `version := "1.2-SNAPSHOT"`  in `build.sbt` under firrtl.
+
+Although I published the rocket-chip, I could not build chipyard successfully.
 
 
 # 2019/12/16-22
@@ -585,7 +642,7 @@ It's not just named space control but it's also reusing outer definitions withou
 
 ```scala
 def factorial(n: Int): Int = 
-    if (n == 0) 1 else n * factorial(n-1)
+		if (n == 0) 1 else n * factorial(n-1)
 ```
 
 ### Week2
@@ -596,8 +653,8 @@ def factorial(n: Int): Int =
 
 ```scala
 def sum(f: Int => Int, a: Int, b: Int): Int =
-    if (a > b) 0
-    else f(a) + sum(f, a + 1, b)
+		if (a > b) 0
+		else f(a) + sum(f, a + 1, b)
 def cube(x: Int): Int = x*x*x
 def id(x:Int): Int = x
 def sumInts(a: Int, b: Int) = sum(id, a, b)
@@ -613,16 +670,16 @@ def sumCubes(a: Int, b: Int) = sum(cube, a, b)
 
 ```scala
 def sum(f: Int => Int, a: Int, b: Int): Int =
-    if (a > b) 0
-    else f(a) + sum(f, a + 1, b)
+		if (a > b) 0
+		else f(a) + sum(f, a + 1, b)
 def sumInts(a: Int, b: Int) = sum(x = > x, a, b)
 def sumCubes(a: Int, b: Int) = sum(x => x * x * x, a, b)
 ```
 
 ```scala
 def sum(f: Int => Int)(a: Int, b: Int): Int =
-    if (a>b) 0
-    else f(a) + sum(f)(a + 1, b)
+		if (a>b) 0
+		else f(a) + sum(f)(a + 1, b)
 def sumInts = sum(x => x)
 def sumCubes = sum(x => x * x * x)
 sumCubes(1, 10) + sumInts(10, 20)
@@ -635,7 +692,7 @@ val x = sqrt(y)
 assert(x >= 0)
 
 class Balabala(x: Int, y: Int){
-        require(y != 0, "y must be nonzero")
+				require(y != 0, "y must be nonzero")
 }
 ```
 
@@ -754,56 +811,56 @@ double matrix[10][15];
 //initialize the static matrix
 for (i=0;i<10;i++)
 {
-    for(j=0;j<15;j++)
-    {
-        matrix[i][j]=0;
-    }
+		for(j=0;j<15;j++)
+		{
+				matrix[i][j]=0;
+		}
 }
 
 
 // define the struct, need a pointer. m means row and n means column
 typedef struct
 {
-    double **mat;
-    int m, n;
+		double **mat;
+		int m, n;
 }matrix;
 
 //apply for memory space, use malloc()
 void initial(matrix &T,int m,int n)
 {
-    int i = 0;
-    T.mat = (double **)malloc(m*sizeof(double *));
-    for (i = 0; i < m; m++)
-    {
-        T.mat[i] = (double *)malloc(n*sizeof(double));
-    }
-    T.m = m;
-    T.n = n;
+		int i = 0;
+		T.mat = (double **)malloc(m*sizeof(double *));
+		for (i = 0; i < m; m++)
+		{
+				T.mat[i] = (double *)malloc(n*sizeof(double));
+		}
+		T.m = m;
+		T.n = n;
 }
 
 //initialize the matrix with the zero element.
 void initValue(matrix &T, int m, int n)
 {
-    int i, j;
-    initial(T,m,n);
-    for (i = 0; i < m; i++)
-    {
-        for (j = 0; j < n; j++)
-        {
-            T.mat[i][j] = 0;
-        }
-    }
+		int i, j;
+		initial(T,m,n);
+		for (i = 0; i < m; i++)
+		{
+				for (j = 0; j < n; j++)
+				{
+						T.mat[i][j] = 0;
+				}
+		}
 }
 
 //free the memory space
 void destroy(matrix &T)
 {
-    int i;
-    for (i = 0; i < T.m; i++)
-    {
-        free(T.mat[i]);
-    }
-    free(T.mat);
+		int i;
+		for (i = 0; i < T.m; i++)
+		{
+				free(T.mat[i]);
+		}
+		free(T.mat);
 }
 //finished
 ```
@@ -973,24 +1030,27 @@ By accidentally, I included the highest file (`generator` in this case) and it s
 
 ```scala
 lazy val matrixsum = conditionalDependsOn(project in file("/home/singularity/chipyard/generators/matrixsum"))
-    .dependsOn(rocketchip, chisel_testers, sifive_blocks, sifive_cache, utilities, midasTargetUtils)
-    .settings(commonSettings)
+		.dependsOn(rocketchip, chisel_testers, sifive_blocks, sifive_cache, utilities, midasTargetUtils)
+		.settings(commonSettings)
 ```
 
 But that's works on the top module, the `dependson` must be a subfile of the current `build.sbt`  directory.
 
 ### Can not find the lvy local lib
 
-Haven't solved yet.
+~~Haven't solved yet~~
+
+---
+
+Solved at Dec 28th by republish it with the value of `version := 1.2-SNAPSHOT` in `build.sbt`.
 
 ```
 1 targets failed
 adder.compileClasspath 
 Resolution failed for 1 modules:
 --------------------------------------------
-    edu.berkeley.cs:treadle_2.12:1.2-SNAPSHOT 
-    not found: /home/singularity/.ivy2/local/edu.berkeley.cs/treadle_2.12/1.2-SNAPSHOT/ivys/ivy.xml
-    not found: https://repo1.maven.org/maven2/edu/berkeley/cs/treadle_2.12/1.2-SNAPSHOT/treadle_2.12-1.2-SNAPSHOT.pom
-    not found: https://oss.sonatype.org/content/repositories/releases/edu/berkeley/cs/treadle_2.12/1.2-SNAPSHOT/treadle_2.12-1.2-SNAPSHOT.pom
+		edu.berkeley.cs:treadle_2.12:1.2-SNAPSHOT 
+		not found: /home/singularity/.ivy2/local/edu.berkeley.cs/treadle_2.12/1.2-SNAPSHOT/ivys/ivy.xml
+		not found: https://repo1.maven.org/maven2/edu/berkeley/cs/treadle_2.12/1.2-SNAPSHOT/treadle_2.12-1.2-SNAPSHOT.pom
+		not found: https://oss.sonatype.org/content/repositories/releases/edu/berkeley/cs/treadle_2.12/1.2-SNAPSHOT/treadle_2.12-1.2-SNAPSHOT.pom
 ```
-
