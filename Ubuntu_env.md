@@ -37,6 +37,22 @@ SCALA_VERSION=2.12.8 ALMOND_VERSION=0.2.1
 
 ## Chipyard
 
+### QEMU Dependence
+
+Error When installing the RISC-V tools:
+
+```shell
+==>  Configuring qemu
+
+ERROR: glib-2.48 gthread-2.0 is required to compile QEMU
+```
+
+So we need to before installing the RISC-V tools:
+
+```shell
+sudo apt-get install libglib2.0-dev
+```
+
 ### Setup
 ```shell
 git clone https://github.com/ucb-bar/chipyard.git
