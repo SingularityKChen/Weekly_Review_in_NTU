@@ -17,6 +17,15 @@ sudo apt-get update
 sudo apt-get install sbt
 ```
 
+## Install Jave 8 and Set Default Version
+```shell
+sudo apt install openjdk-8-jdk-headless
+sudo apt install openjdk-8-jde-headless
+#optional
+sudo update-alternatives --config java
+sudo update-alternatives --config javac
+```
+
 ## Scala Kernel for Jupyter (optional)
 ```shell
 curl -L -o coursier https://git.io/coursier && chmod +x coursier
