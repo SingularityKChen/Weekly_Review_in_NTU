@@ -45,12 +45,15 @@ Error When installing the RISC-V tools:
 ==>  Configuring qemu
 
 ERROR: glib-2.48 gthread-2.0 is required to compile QEMU
+
+ERROR: pixman >= 0.21.8 not present.
+       Please install the pixman devel package.
 ```
 
-So we need to before installing the RISC-V tools:
+So we need to install the lib before installing the RISC-V tools:
 
 ```shell
-sudo apt-get install libglib2.0-dev
+sudo apt-get install libglib2.0-dev libpixman-1-dev
 ```
 
 ### Setup
