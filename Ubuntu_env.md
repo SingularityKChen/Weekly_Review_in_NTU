@@ -1,6 +1,6 @@
-# Some lib
+# Some Lib
 
-## one_line
+## Some Dependence
 
 ```shell
 cd ~
@@ -9,7 +9,7 @@ sudo apt-get install vim git autoconf automake autotools-dev curl device-tree-co
 sudo pip install jupyter notebook
 ```
 
-## sbt
+## Sbt
 ```shell
 echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
 curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key add
@@ -17,9 +17,34 @@ sudo apt-get update
 sudo apt-get install sbt
 ```
 
-# Some gits
+## Scala Kernel for Jupyter (optional)
+```shell
+curl -L -o coursier https://git.io/coursier && chmod +x coursier
+SCALA_VERSION=2.12.8 ALMOND_VERSION=0.2.1
+./coursier bootstrap -r jitpack -i user -I user:sh.almond:scala-kernel-api_$SCALA_VERSION:$ALMOND_VERSION sh.almond:scala-kernel_$SCALA_VERSION:$ALMOND_VERSION --sources --default=true -o almond
+./almond --install
+```
 
-## firrtl
+# Some Gits (after sbt)
+
+## Chipyard
+
+### Setup
+```shell
+git clone https://github.com/ucb-bar/chipyard.git
+cd chipyard
+./scripts/init-submodules-no-riscv-tools.sh
+```
+
+### Installing the RISC-V Tools
+
+The shell needs `bash` or you have to correct some commands in `env.sh`
+```shell
+./scripts/build-toolchains.sh
+source ./env.sh
+```
+
+## Firrtl(no need if git chipyard)
 
 ```shell
 cd ~
@@ -31,8 +56,7 @@ sudo sbt publishLocal
 ```
 
 
-
-## Chisel3
+## Chisel3(no need if git chipyard)
 
 ```shell
 cd ~
@@ -42,3 +66,13 @@ sudo sbt test
 sudo sbt publishLocal
 ```
 
+
+
+## Bootcamp (optional)
+
+```shell
+git clone https://github.com/freechipsproject/chisel-bootcamp.git
+cd chisel-bootcamp
+mkdir -p ~/.jupyter/custom
+cp source/custom.js ~/.jupyter/custom/custom.js
+```
