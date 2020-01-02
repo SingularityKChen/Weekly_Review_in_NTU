@@ -10,6 +10,7 @@ sudo pip install jupyter notebook
 ```
 
 ## Sbt
+
 ```shell
 echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
 curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key add
@@ -17,7 +18,16 @@ sudo apt-get update
 sudo apt-get install sbt
 ```
 
+## Mill
+
+```shell
+sudo su
+curl -L https://github.com/lihaoyi/mill/releases/download/0.5.6/0.5.6 > /usr/local/bin/mill
+chmod +x /usr/local/bin/mill
+```
+
 ## Install Jave 8 and Set Default Version
+
 ```shell
 sudo apt install openjdk-8-jdk-headless
 #optional
@@ -26,6 +36,7 @@ sudo update-alternatives --config javac
 ```
 
 ## Scala Kernel for Jupyter (optional)
+
 ```shell
 curl -L -o coursier https://git.io/coursier && chmod +x coursier
 SCALA_VERSION=2.12.8 ALMOND_VERSION=0.2.1
@@ -57,6 +68,7 @@ sudo apt-get install libglib2.0-dev libpixman-1-dev
 ```
 
 ### Setup
+
 ```shell
 git clone https://github.com/ucb-bar/chipyard.git
 cd chipyard
