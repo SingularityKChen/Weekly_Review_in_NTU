@@ -2,6 +2,16 @@
 
 <!-- MarkdownTOC -->
 
+1. [2019/12/30-2020/01/05](#20191230-20200105)
+	1. [A Survey on Methods and Theories of Quantized Neural Networks](#a-survey-on-methods-and-theories-of-quantized-neural-networks)
+		1. [Quantization Techniques](#quantization-techniques)
+		1. [Two Quantization Methodologies](#two-quantization-methodologies)
+		1. [Discussion](#discussion)
+		1. [Why Does QuantizationWork?](#why-does-quantizationwork)
+		1. [Future of Quantized Neural Networks](#future-of-quantized-neural-networks)
+	1. [Some Terms](#some-terms)
+		1. [Stackelberg Game](#stackelberg-game)
+		1. [Fog Computation](#fog-computation)
 1. [2019/12/23-29](#20191223-29)
 	1. [Efficient Processing of Deep Neural Networks: A Tutorial and Survey](#efficient-processing-of-deep-neural-networks-a-tutorial-and-survey)
 		1. [Creating A System for Efficient DNN Processing](#creating-a-system-for-efficient-dnn-processing)
@@ -63,6 +73,95 @@
 <!-- /MarkdownTOC -->
 
 ---
+
+# 2019/12/30-2020/01/05
+
+Last week, I only read one article which is the survey of QNN. Although I know how to utilize several QNN models to reduce the memory requirements and power consumption, I don't understand why those formulas works  due to the lack of some basic mathematic knowledge in neural network.
+
+I took my main time and energy to write my initial stage's report of my final year's project. During that period, I recall the paper I read the past month and thought over my project in a more detail. I though I could start my project with the basic processing element and then read more paper to find something interesting and then optimize the design.
+
+Also, before the new year, I created one new Linux virtual machine with Virtual Box. And after new year, I downloaded the latest Chipyard project from GitHub and rebuilt the environment in both mine virtual machine and Shien's. Fortunately, the new environment works now.
+
+And this week, I will try to read as many Song Han's papers as possible before his seminar, and then I will read some other papers [listed before](#20191216-22). I hope I could finish the translation work of chisel-bootcamp module 3.6 before this Saturday. After that, I will begin the design of PE in my FYP.
+
+## A Survey on Methods and Theories of Quantized Neural Networks
+
+### Quantization Techniques
+
+#### Deterministic quantization
+
+![Summarization of different quantization methods](https://images-cdn.shimo.im/E83E8CAU8qoHf9i7/image.png)
+
++ Rounding 
+
+![rounding function](https://images-cdn.shimo.im/58vtJu1ZLs8MoiXT/image.png)
+
++ Vector Quantization: cluster the weights into groups and use the centroid of each group to replace the actual weights during inference.
+
+	 ![](https://images-cdn.shimo.im/tYIO1b2acTYLsA2f/image.png)
+
+	+ k-means
+	+ Hessian weighted k-means
+	+ product quantization
+	+ residual quantization
+
++ Quantization as Optimization: formulating the quantization problem as an optimization problem
+
+#### Stochastic Quantization
+
++ Random Rounding: In random rounding, the real value has no one-to-one mapping to the quantized value. Typically, the quantized value is sampled from a discrete distribution which is parameterized by the real values.
+
+![random rounding function](https://images-cdn.shimo.im/Nj7hgrxuuyIB8VSC/image.png)
+
++ Probabilistic Quantization: the weights are assumed to be discretely distributed.
+
+### Two Quantization Methodologies
+![Summarization of fixed codebook and adaptive codebook quantization](https://images-cdn.shimo.im/Lcm0g5YaotI8sPTx/image.png)
+
+#### Fixed codebook quantization
+
+The codebook is predefined.
+
+#### Adaptive Codebook Quantization
+
+The codebook is learned from the data. Vector quantization and probabilistic quantization are two possible methods to achieve adaptive codebook quantization.
+
+Two kinds of adaptive codebook quantization exist: hard quantization and soft quantization. 
+
++ In hard quantization, the real value is assigned exactly to be one of the discrete values. 
++ In soft quantization the real value is assigned to be some discrete value according to a probability distribution.
+
+### Discussion
+
+Quantized weights and activations occupy less memory compared with full-precision counterparts. Meanwhile, the training and inference speed can be greatly accelerated since the dot products
+between weights and activations can be replaced by bitwise operations. Quantized gradients can reduce the overhead of gradient synchronization in parallel neural network training. In a single worker scenario, quantized gradients can accelerate back-propagation training as well as requiring less memory.
+
+### Why Does QuantizationWork?
+
+They found that the binarization operation preserves some important properties of the full-precision networks, i.e,
+
++ Angle Preservation Property
++ Dot Product Proportionality Property
+
+### Future of Quantized Neural Networks
+
+The following possible directions for the next steps:
+
++ Develop more sophisticated rounding mechanism to train quantized neural network from scratch. One possible approach is to use the structure information of the weights to guide the rounding process.
++ Design quantized neural networks for tasks such as natural language processing, speech recognition and so on. Due to the varieties of deep learning models, a generally applicable quantization method is necessary.
++ Develop theoretical guidance for quantizing neural networks.
+
+## Some Terms
+
+### Stackelberg Game
+
+In the [MBAlib](https://wiki.mbalib.com/wiki/%E6%96%AF%E5%A1%94%E5%85%8B%E5%B0%94%E4%BC%AF%E6%A0%BC%E6%A8%A1%E5%9E%8B) describes the meaning of it.
+
+The **Stackelberg leadership model** is a strategic game in economics in which the leader firm moves first and then the follower firms move sequentially.
+
+### Fog Computation
+
+
 
 # 2019/12/23-29
 
@@ -573,7 +672,7 @@ So this week, I'll focus on some papers mentioned in the tutorial, including bib
 
 - [ ] \[5\] V. Sze, Y.-H. Chen, J. Emer, A. Suleiman, and Z. Zhang, “Hardware for Machine Learning: Challenges and Opportunities,” *2017 IEEE Custom Integrated Circuits Conference (CICC)*, pp. 1–8, Apr. 2017, doi: [10.1109/CICC.2017.7993626](https://doi.org/10.1109/CICC.2017.7993626).
 
-- [ ] \[6\] Y. Guo, “A Survey on Methods and Theories of Quantized Neural Networks,” *arXiv:1808.04752 [cs, stat]*, Dec. 2018.
+- [x] \[6\] Y. Guo, “A Survey on Methods and Theories of Quantized Neural Networks,” *arXiv:1808.04752 [cs, stat]*, Dec. 2018.
 
 - [ ] \[7\] S. Zheng, Y. Liu, S. Yin, L. Liu, and S. Wei, “An efficient kernel transformation architecture for binary- and ternary-weight neural network inference,” presented at the Proceedings of the 55th Annual Design Automation Conference, 2018, p. 137, doi: [10.1145/3195970.3195988](https://doi.org/10.1145/3195970.3195988).
 
