@@ -1,0 +1,47 @@
+# Reference
+
+- [x] \[1\] V. Sze, Y.-H. Chen, T.-J. Yang, and J. S. Emer, “Efficient Processing of Deep Neural Networks: A Tutorial and Survey,” *Proceedings of the IEEE*, vol. 105, no. 12, pp. 2295–2329, Dec. 2017, doi: [10.1109/JPROC.2017.2761740](https://doi.org/10.1109/JPROC.2017.2761740).
+
+- [x] \[2\] Y.-H. Chen, T.-J. Yang, J. Emer, and V. Sze, “Eyeriss v2: A Flexible Accelerator for Emerging Deep Neural Networks on Mobile Devices,” *arXiv:1807.07928 [cs]*, May 2019.
+
+- [x] \[3\] Y.-H. Chen, J. Emer, V. Sze, Y.-H. Chen, J. Emer, and V. Sze, “Eyeriss: a spatial architecture for energy-efficient dataflow for convolutional neural networks,” *ACM SIGARCH Computer Architecture News*, vol. 44, no. 3, pp. 367–379, Jun. 2016, doi: [10.1109/ISCA.2016.40](https://doi.org/10.1109/ISCA.2016.40).
+
+- [x] \[4\]  Y.-H. Chen, T. Krishna, J. S. Emer, and V. Sze, “Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks,” *IEEE J. Solid-State Circuits*, vol. 52, no. 1, pp. 127–138, Jan. 2017, doi: [10.1109/JSSC.2016.2616357](https://doi.org/10.1109/JSSC.2016.2616357).
+
+- [ ] \[5\] V. Sze, Y.-H. Chen, J. Emer, A. Suleiman, and Z. Zhang, “Hardware for Machine Learning: Challenges and Opportunities,” *2017 IEEE Custom Integrated Circuits Conference (CICC)*, pp. 1–8, Apr. 2017, doi: [10.1109/CICC.2017.7993626](https://doi.org/10.1109/CICC.2017.7993626).
+
+- [x] \[6\] Y. Guo, “A Survey on Methods and Theories of Quantized Neural Networks,” *arXiv:1808.04752 [cs, stat]*, Dec. 2018.
+
+- [ ] \[7\] S. Zheng, Y. Liu, S. Yin, L. Liu, and S. Wei, “An efficient kernel transformation architecture for binary- and ternary-weight neural network inference,” presented at the Proceedings of the 55th Annual Design Automation Conference, 2018, p. 137, doi: [10.1145/3195970.3195988](https://doi.org/10.1145/3195970.3195988).
+
+- [ ] \[8\] Y. Hu *et al.*, “BitFlow: Exploiting Vector Parallelism for Binary Neural Networks on CPU,” in *2018 IEEE International Parallel and Distributed Processing Symposium (IPDPS)*, 2018, pp. 244–253, doi: [10.1109/IPDPS.2018.00034](https://doi.org/10.1109/IPDPS.2018.00034).
+
+- [ ] \[9\] Y. Chen *et al.*, “DaDianNao: A Machine-Learning Supercomputer,” in *2014 47th Annual IEEE/ACM International Symposium on Microarchitecture*, Cambridge, United Kingdom, 2014, pp. 609–622, doi: [10.1109/MICRO.2014.58](https://doi.org/10.1109/MICRO.2014.58).
+
+- [ ] \[10\] Y. Chen, T. Chen, Z. Xu, N. Sun, and O. Temam, “DianNao family: energy-efficient hardware accelerators for machine learning,” *Commun. ACM*, vol. 59, no. 11, pp. 105–112, Oct. 2016, doi: [10.1145/2996864](https://doi.org/10.1145/2996864).
+
+- [ ] \[11\] T. Chen *et al.*, “DianNao: a small-footprint high-throughput accelerator for ubiquitous machine-learning,” in *Proceedings of the 19th international conference on Architectural support for programming languages and operating systems - ASPLOS ’14*, Salt Lake City, Utah, USA, 2014, pp. 269–284, doi: [10.1145/2541940.2541967](https://doi.org/10.1145/2541940.2541967).
+
+- [x] \[12\] S. Han *et al.*, “EIE: Efficient Inference Engine on Compressed Deep Neural Network,” *arXiv:1602.01528 [cs]*, May 2016.
+
+- [ ] \[13\] N. P. Jouppi *et al.*, “In-Datacenter Performance Analysis of a Tensor Processing UnitTM,” p. 17.
+
+- [ ] \[14\] Z. Du *et al.*, “ShiDianNao: shifting vision processing closer to the sensor,” in *Proceedings of the 42nd Annual International Symposium on Computer Architecture - ISCA ’15*, Portland, Oregon, 2015, pp. 92–104, doi: [10.1145/2749469.2750389](https://doi.org/10.1145/2749469.2750389).
+
+- [x] \[15\] H. Wang, J. Yang, H.-S. Lee, and S. Han, “Learning to Design Circuits,” arXiv:1812.02734 [cs], Jan. 2019.
+
+- [x] \[16\] H. Cai, L. Zhu, and S. Han, “ProxylessNAS: Direct Neural Architecture Search on Target Task and Hardware,” presented at the International Conference on Learning Representations, 2018.
+
+- [x] \[17\] S. Han et al., “Design Automation for Efficient Deep Learning Computing,” arXiv:1904.10616 [cs, stat], Apr. 2019.
+
+- [ ] \[18\] S. Han, H. Mao, and W. J. Dally, “Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding,” arXiv:1510.00149 [cs], Feb. 2016.
+
+- [ ] \[19\] S. Han et al., “ESE: Efficient Speech Recognition Engine with Sparse LSTM on FPGA,” arXiv:1612.00694 [cs], Feb. 2017.
+
+- [ ] \[20\] C. Hao et al., “NAIS: Neural Architecture and Implementation Search and its Applications in Autonomous Driving,” arXiv:1911.07446 [cs, stat], Nov. 2019.
+
+- [ ] \[21\] H. Cai, C. Gan, T. Wang, Z. Zhang, and S. Han, “ONCE FOR ALL: TRAIN ONE NETWORK AND SPECIALIZE IT FOR EFFICIENT DEPLOYMENT,” p. 13, 2020.
+
+- [ ] \[22\] K. Guo, S. Han, S. Yao, Y. Wang, Y. Xie, and H. Yang, “Software-Hardware Codesign for Efficient Neural Network Acceleration,” IEEE Micro, vol. 37, no. 2, pp. 18–25, Mar. 2017, doi: 10.1109/MM.2017.39.
+
+- [ ] \[23\] K. Wang, Z. Liu, Y. Lin, J. Lin, and S. Han, “HAQ: Hardware-Aware Automated Quantization With Mixed Precision,” presented at the Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2019, pp. 8612–8620.
