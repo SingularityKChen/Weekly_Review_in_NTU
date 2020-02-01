@@ -112,7 +112,259 @@
 
 ---
 
+# 2020/01/27-2020/02/02
 
+This week I read a lot of materials related to the state-of-art chip architectures mainly from HPML 2019 and hot-chip 2019.
+
+## HotChip19[1, p. 31]
+
+### AMD[2]
+
+Accelerated core IP
+
+Chip-let architecture
+
+High-speed coherent interconnects
+
+System and software co-optimization
+
+Continued technology scaling
+
+### Co-designing architecture and infrastructure[1]
+
+#### Why?
+
+- Necessary due to End of Moore’s Law
+
+- Architect infrastructure for usability and scale
+
+- Leverage all areas of expertise
+
+#### DLA Co-design: 
+
+**ML research: **
+
+- Computational requirements for cutting-edge models.
+
+- Input/output data feed rates
+
+- Types of operations to accelerate
+
+- Latency and bw requirements
+
+- Trains without loss scaling, unlike float 16
+
+- Latest computational requirements
+
+- Size and scope of models
+
+**ASIC:**
+
+- Small mantissa reduces multiplier power, area
+
+**Software:**
+
+- Proper flexibility and programmability
+
+- Controllability
+
+- Same dynamic range as float 32, same Inf/NaN behavior
+
+- Programmability for parallelism infrastructure
+
+**Compilers:**
+
+- JIT code-gen & parallel IRs
+
+**Systems:** 
+
+- Power delivery, board space.
+
+- Board layout
+
+- Thermal limits
+
+- Liquid cooling
+
+**Data Center:** 
+
+- Cooling, buildability
+
+- Wiring and serviceability
+
+- Performance metrics
+
+- Space and network provisioning
+
+- Network requirements
+
+- Power delivery
+
+#### System Co-design
+
+**Storage systems:**
+
+- high bandwidth disks, network
+
+**Accelerators:**
+
+- infeed & asynchronous abstractions
+
+**Software:**
+
+- high throughput, software pipelining, horizontal scaling.
+
+### NVIDIA:[3]
+
+Network-on-Package and Network-on-Chip
+
+Use GRS for inter-chip communication
+
+Tiled architecture with distributed memory
+
+Scalable DL inference accelerator
+
+Scaling DL inference across NoP/NoC
+
+### HUAWEI:[4]
+
+![](https://images-cdn.shimo.im/H7yxEtBaC8Q9I6h3/image.png)
+
+1D Scalar Unit + 2D Vector Unit + 3D Matrix Unit + 3DSRAM
+
+![Building Blocks and their Computation Intensity](https://images-cdn.shimo.im/ap7Cp5EJAj8H3rqw/image.png)
+
+Memory Wall & I/O Wall
+
+![Memory Wall & I/O Wall](https://images-cdn.shimo.im/kMCfRE7zax0htQ6x/image.png)
+
+3D IC to alleviate memory wall, IO wall and logic wall
+
+![Technology challenges —Why do we need 3DIC](https://images-cdn.shimo.im/omoS6GuJwl8liyb4/image.png)
+
+![Mobile AP:  LoL+ MoL](https://images-cdn.shimo.im/Q8SU9NfFKTw4aDTu/image.png)
+
+### Ayar Labs:[5]
+
+![HPE Optical Module](https://images-cdn.shimo.im/GOnjOUjdcgoSoPC4/image.png)
+
+Chip-to-chip communications requires photonics to overcome I/O bottleneck
+
+Emerging chip-let ecosystem offers opportunity for in-package optics
+
+In -package optics fundamentally breaks the traditional bandwidth-distance trade-off and supports new high-performance computer architectures
+
+### TSMC:[6]
+
+EoML: end of Moore's Law
+
+![EoM](https://images-cdn.shimo.im/EgQkw7kANcA41TFX/image.png)
+
+COMPUTE-MEMORY INTEGRATION
+
+![2D System](https://images-cdn.shimo.im/Zp5mPf8BZBk9xybI/image.png)
+
+![2.5D System](https://images-cdn.shimo.im/mHc1escvx3gTCRho/image.png)
+
+![3D TSV System](https://images-cdn.shimo.im/vxhuvwhCWtcsZqnN/image.png)
+
+![N3XT System](https://images-cdn.shimo.im/JS3t3mbExbgfYSbr/image.png)
+
+![New Memory System](https://images-cdn.shimo.im/HmcK46KfrRMhRBvL/image.png)
+
+### NVIDIA[7]
+
+![Turing SM](https://images-cdn.shimo.im/yzy4xDIFJkQfdDql/image.png)
+
+### UPMEM[8]
+
+![](https://images-cdn.shimo.im/f1HWhZFJTv0PStT0/image.png)
+
+![](https://images-cdn.shimo.im/s9xWmc6cXpAGsZa5/image.png)
+
+### MLPerf[9]
+
+#### Training Metric
+
+![](https://images-cdn.shimo.im/5DDQC8PuNvgQNpRX/image.png)
+
+![](https://images-cdn.shimo.im/E4KbrvfTZicO6FJ6/image.png)
+
+![](https://images-cdn.shimo.im/bKIIRxLitPIxjDiL/image.png)
+
+![](https://images-cdn.shimo.im/N0ry1LExtm43snE3/image.png)
+
+#### Inference Metric
+
+![Inference Metric](https://images-cdn.shimo.im/OsZrJLULzqgucABE/image.png)
+
+## Current HPC Challenges
+
+Large message collective communication and reductions[10]
+
+Limited network bandwidth[11]
+
+Parallel data access and computation[11]
+
+Low latency (in inference)[12]
+
+Most DL frameworks are optimized for single-node training[10]
+
+Support different DNN models and layers[12]
+
+Fully utilize HPC clusters[10]
+
+Memory Wall & I/O Wall[4]
+
+## New features in Improving
+
+Utilize photonics to overcome network BW bottleneck[5]
+
+Designed to scale[13], [14]
+
+Co-design the support at runtime level and exploit it at the DL framework level[10]
+
+Distributed (Parallel) Training[10]
+
+Platform-aware compression and quantization
+
+Dynamic adaptive resource management[15] 
+
+Software environment with a subset of hardware platform
+
+## Reference of this week
+
+[1]  “HC31 (2019),” *Hot Chips: A Symposium on High Performance Chips*, 18-Aug-2019. [Online]. Available: https://www.hotchips.org/archives/2010s/hc31/. [Accessed: 31-Jan-2020].
+
+[2]  L. Su, “Delivering the Future of High-Performance Computing,” in *2019 IEEE Hot Chips 31 Symposium (HCS)*, 2019, pp. 1–43, doi: 10.1109/HOTCHIPS.2019.8875685.
+
+[3]  R. Venkatesan *et al.*, “A 0.11 PJ/OP, 0.32-128 Tops, Scalable Multi-Chip-Module-Based Deep Neural Network Accelerator Designed with A High-Productivity vlsi Methodology,” in *2019 IEEE Hot Chips 31 Symposium (HCS)*, 2019, pp. 1–24, doi: 10.1109/HOTCHIPS.2019.8875657.
+
+[4]  H. Liao, J. Tu, J. Xia, and X. Zhou, “DaVinci: A Scalable Architecture for Neural Network Computing,” in *2019 IEEE Hot Chips 31 Symposium (HCS)*, 2019, pp. 1–44, doi: 10.1109/HOTCHIPS.2019.8875654.
+
+[5]  M. Wade, “TeraPHY: A Chiplet Technology for Low-Power, High-Bandwidth in-Package Optical I/O,” in *2019 IEEE Hot Chips 31 Symposium (HCS)*, 2019, pp. i–xlviii, doi: 10.1109/HOTCHIPS.2019.8875658.
+
+[6]  H.-S. P. Wong, R. Willard, and I. K. Bell, “IC Technology – What Will the Next Node Offer Us?,” in *2019 IEEE Hot Chips 31 Symposium (HCS)*, 2019, pp. 1–52, doi: 10.1109/HOTCHIPS.2019.8875692.
+
+[7]  J. Burgess, “RTX ON – The NVIDIA TURING GPU,” in *2019 IEEE Hot Chips 31 Symposium (HCS)*, 2019, pp. 1–27, doi: 10.1109/HOTCHIPS.2019.8875651.
+
+[8]  F. Devaux, “The true Processing In Memory accelerator,” in *2019 IEEE Hot Chips 31 Symposium (HCS)*, 2019, pp. 1–24, doi: 10.1109/HOTCHIPS.2019.8875680.
+
+[9]  P. Mattson, “ML Benchmark Design Challenges,” in *2019 IEEE Hot Chips 31 Symposium (HCS)*, 2019, pp. 1–36, doi: 10.1109/HOTCHIPS.2019.8875660.
+
+[10] “HPML 2019: HIGH PERFORMANCE MACHINE LEARNING.” [Online]. Available: https://hpml2019.github.io/#keynote. [Accessed: 28-Jan-2020].
+
+[11] J. Keuper and F.-J. Preundt, “Distributed Training of Deep Neural Networks: Theoretical and Practical Limits of Parallel Scalability,” in *2016 2nd Workshop on Machine Learning in HPC Environments (MLHPC)*, 2016, pp. 19–26, doi: 10.1109/MLHPC.2016.006.
+
+[12] V. Sze, Y.-H. Chen, T.-J. Yang, and J. S. Emer, “Efficient Processing of Deep Neural Networks: A Tutorial and Survey,” *Proc. IEEE*, vol. 105, no. 12, pp. 2295–2329, Dec. 2017, doi: 10.1109/JPROC.2017.2761740.
+
+[13] “Training,” *Habana*. [Online]. Available: https://habana.ai/training/. [Accessed: 01-Feb-2020].
+
+[14] Habana Labs Ltd., “Habana Gaudi Training Platform whitepaper.” Jun-2019.
+
+[15] J. Qian, J. Li, R. Ma, and H. Guan, “vDARM: Dynamic Adaptive Resource Management for Virtualized Multiprocessor Systems,” in *2019 Design, Automation Test in Europe Conference Exhibition (DATE)*, 2019, pp. 658–661, doi: 10.23919/DATE.2019.8715048.
+
+ 
 
 # 2020/01/20-26
 
