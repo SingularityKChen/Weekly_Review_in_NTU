@@ -1,45 +1,18 @@
 ---
 layout: post
-title: "2020/02/24-03/01 weekly review"
-description: "the weekly review from 2020/02/24 to 2020/03/01"
-categories: [WeeklyReview, ReadPaper]
-tags: [WeeklyReview, Scala, NPU, TPU, DLA, DianNao]
-last_updated: 2020-03-01 22:51:00 GMT+8
-excerpt: 
+title: "[Read Paper] A Survey of Accelerator Architectures for Deep Neural Networks"
+description: "Reading note of A Survey of Accelerator Architectures for Deep Neural Networks"
+categories: [ReadPaper]
+tags: [NPU, TPU, DLA, DianNao]
+last_updated: 2020-03-07 10:51:00 GMT+8
+excerpt: "A Survey of Accelerator Architectures for Deep Neural Networks."
 redirect_from:
   - /2020/03/01/
 ---
 
 * Kramdown table of contents
 {:toc .toc}
-# 2020/02/24-03/01
-
-## Chisel & Scala Syntax
-
-### Breeze
-
-[Breeze](https://github.com/scalanlp/breeze) is a library for numerical processing. I want to use `Breeze` to generate random dense or sparsity matrix and then get the golden results of convolution or matrix multiply.
-
-[Here](https://blog.csdn.net/u012102306/article/details/53463388) is an api summary. To use `Breeze`, we need to add dependence in `build.sc` (in `mill`).
-
-```scala
-override def ivyDeps = Agg(
-    ivy"other_dependences",
-    ivy"org.scalanlp::breeze:1.0"
-  )
-```
-
-### Replace `sbt` with `mill` in idea
-
-After setup `build.sc`, then run this commond in terminal at the project root directory to let the `idea` utilize mill:
-
-```bash
-mill mill.scalalib.GenIdea/idea
-```
-
-
-
-## A Survey of Accelerator Architectures for Deep Neural Networks
+# A Survey of Accelerator Architectures for Deep Neural Networks
 
 Neural Processing Unit 
 
@@ -72,4 +45,3 @@ RENO: A Reconfigurable NoC Accelerator
 ![](https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200229162033Neuro-cube.png)
 
 ![](https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200229162048Neuro-cube.png)
-
