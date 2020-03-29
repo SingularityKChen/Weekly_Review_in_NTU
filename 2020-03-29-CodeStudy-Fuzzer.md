@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "[CodeReview] RocketChip Fuzzer"
-description: "The study of SiFive TileLink"
-categories: [CodeReview]
+title: "[CodeStudy] RocketChip Fuzzer"
+description: "The study of RocketChip Fuzzer"
+categories: [CodeStudy]
 tags: [Chisel, TileLink]
 last_updated: 2020-03-29 14:48:00 GMT+8
-excerpt: "Code review of fuzzer in rocketchip."
+excerpt: "Study the code: fuzzer in rocketchip. Including how to generate source id, how to send requirement via TileLink."
 redirect_from:
   - /2020/03/29/
 ---
@@ -127,11 +127,11 @@ For more details of client node parameter, you can see [here](https://singularit
 
 <img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200329134935TileLinkFiveChannels.png" alt="TileLink Five Channels" style="zoom: 50%;" />
 
-Here, as we create a client node, or master node. So `out` represents the *Master Interface* in the graph, `edge` represents the *Slaver Interface* in the graph.
+Here, as we create a client node, i.e., master node. So `out` represents the *Master Interface* in the graph, `edge` represents the *Slaver Interface* in the graph.
 
 ### Generate TileLink Messages
 
-From line 156 to line 171, it shows how to generate the TileLink messages such as put, get, Hint, etc. And only the `edge` owns those methods.
+From line 156 to line 171, it shows how to generate TileLink messages such as put, get, Hint, etc. And only the `edge` owns those methods.
 
 ```scala
     // Actually generate specific TL messages when it is legal to do so
@@ -155,13 +155,13 @@ From line 156 to line 171, it shows how to generate the TileLink messages such a
 
 ### Get Legal Message
 
-`legal_dest` is used to see whether current address is legal.
+`legal_dest` is used to see whether the current address is legal.
 
 ```scala
     val legal_dest = edge.manager.containsSafe(addr)
 ```
 
-And each TileLink operation will produce one kind of legal message, so it use mux to get the current operation's legal message.
+And each TileLink operation will produce one kind of legal message, so it uses mux to get the current operation's legal message.
 
 ```scala
     val legal = legal_dest && MuxLookup(a_type_sel, glegal, Seq(
@@ -175,7 +175,7 @@ And each TileLink operation will produce one kind of legal message, so it use mu
 
 ### Assign ReadVaild Signals
 
-It need to know the process of each operation, so 
+It needs to know the process of each operation, so 
 
 ```scala
     // Progress within each operation
