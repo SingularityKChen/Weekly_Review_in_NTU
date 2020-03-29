@@ -18,7 +18,7 @@ redirect_from:
 
 ## Protocol
 
-
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200329134935TileLinkFiveChannels.png" alt="TileLink Five Channels" style="zoom:67%;" />
 
 ## Buses and Nodes
 
