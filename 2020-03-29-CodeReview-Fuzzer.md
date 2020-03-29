@@ -27,7 +27,35 @@ The original one was written in Chisel2 coding style and [Sequencer ](https://gi
 
 This module can be seen as a demo to manage the source id, including how to send source id for requirement and how to reset the source id while it receive the response.
 
-<script src="http://gist-it.appspot.com/https://github.com/sequencer/rocket-chip/blob/2e2af304c049e26256ca545d470e05bb26e701ce/src/main/scala/tilelink/Fuzzer.scala?slice=10:37" ></script>
+```scala
+class IDMapGenerator(numIds: Int) extends Module {
+  require (numIds > 0)
+
+  val w = log2Up(numIds)
+  val io = IO(new Bundle {
+    val free = Flipped(Decoupled(UInt(w.W)))
+    val alloc = Decoupled(UInt(w.W))
+  })
+
+  io.free.ready := true.B
+
+  // True indicates that the id is available
+  val bitmap = RegInit(((BigInt(1) << numIds) -  1).U(numIds.W))
+
+  val select = (~(leftOR(bitmap) << 1)).asUInt & bitmap
+  io.alloc.bits := OHToUInt(select)
+  io.alloc.valid := bitmap.orR()
+
+  val clr = WireDefault(0.U(numIds.W))
+  when (io.alloc.fire()) { clr := UIntToOH(io.alloc.bits) }
+
+  val set = WireDefault(0.U(numIds.W))
+  when (io.free.fire()) { set := UIntToOH(io.free.bits) }
+
+  bitmap := (bitmap & (~clr).asUInt) | set
+  assert (!io.free.valid || !(bitmap & (~clr).asUInt)(io.free.bits)) // No double freeing
+}
+```
 
 `io.free` is used to receive the response source id via `TileLink` channel D, `io.alloc` is used to send the require source id via `TileLink` channel A.
 
@@ -65,7 +93,23 @@ This module will not finish until it sends/receives `nOperations`.
 
 Firstly, it create a `clientParams`.
 
-<script src="http://gist-it.appspot.com/https://github.com/sequencer/rocket-chip/blob/2e2af304c049e26256ca545d470e05bb26e701ce/src/main/scala/tilelink/Fuzzer.scala?slice=89:104" ></script>
+```scala
+val clientParams = if (nOrdered.isDefined) {
+    val n = nOrdered.get
+    require(n > 0, s"nOrdered must be > 0, not $n")
+    require((inFlight % n) == 0, s"inFlight (${inFlight}) must be evenly divisible by nOrdered (${nOrdered}).")
+    Seq.tabulate(n) {i =>
+      TLClientParameters(name =s"OrderedFuzzer$i",
+        sourceId = IdRange(i * (inFlight/n),  (i + 1)*(inFlight/n)),
+        requestFifo = true)
+    }
+  } else {
+    Seq(TLClientParameters(
+      name = "Fuzzer",
+      sourceId = IdRange(0,inFlight)
+    ))
+  }
+```
 
 Then use it to create a client node, i.e., a master node.
 
@@ -89,7 +133,25 @@ Here, as we create a client node, or master node. So `out` represents the *Maste
 
 From line 156 to line 171, it shows how to generate the TileLink messages such as put, get, Hint, etc. And only the `edge` owns those methods.
 
-<script src="http://gist-it.appspot.com/https://github.com/sequencer/rocket-chip/blob/2e2af304c049e26256ca545d470e05bb26e701ce/src/main/scala/tilelink/Fuzzer.scala?slice=154:171" ></script>
+```scala
+    // Actually generate specific TL messages when it is legal to do so
+    val (glegal,  gbits)  = edge.Get(src, addr, size)
+    val (pflegal, pfbits) = if(edge.manager.anySupportPutFull) {
+                              edge.Put(src, addr, size, data)
+                            } else { (glegal, gbits) }
+    val (pplegal, ppbits) = if(edge.manager.anySupportPutPartial) {
+                              edge.Put(src, addr, size, data, mask)
+                            } else { (glegal, gbits) }
+    val (alegal,  abits)  = if(edge.manager.anySupportArithmetic) {
+                              edge.Arithmetic(src, addr, size, data, arth_op)
+                            } else { (glegal, gbits) }
+    val (llegal,  lbits)  = if(edge.manager.anySupportLogical) {
+                             edge.Logical(src, addr, size, data, log_op)
+                            } else { (glegal, gbits) }
+    val (hlegal,  hbits)  = if(edge.manager.anySupportHint) {
+                              edge.Hint(src, addr, size, 0.U)
+                            } else { (glegal, gbits) }
+```
 
 ### Get Legal Message
 
@@ -152,4 +214,43 @@ As this module uses channel a, b and d, doesn't use channel c and e, so
 
 I [changed the idMap generator](https://github.com/SingularityKChen/dl_accelerator/blob/fdd71c01cb85aa6556958fd421a6888450fd6e98/dla/src/diplomatic/MemCtrl.scala#L89) where each source id only sends one requirement by using two different registers `reqBitmap` and `respBitmap`.
 
-<script src="http://gist-it.appspot.com/https://github.com/SingularityKChen/dl_accelerator/blob/fdd71c01cb85aa6556958fd421a6888450fd6e98/dla/src/diplomatic/MemCtrl.scala?slice=88:126" ></script>
+```scala
+class EyerissIDMapGenerator(val numIds: Int) extends Module {
+  require(numIds > 0)
+  private val w = log2Up(numIds)
+  val io: EyerissIDMapGenIO = IO(new EyerissIDMapGenIO(w))
+  io.free.ready := true.B
+  /** [[reqBitmap]] true indicates that the id hasn't send require signal;
+    * [[respBitmap]] true indicates that the id has received response;
+    * both of them have [[numIds]] bits, and each bit represents one id;
+    * */
+  private val reqBitmap: UInt = RegInit(((BigInt(1) << numIds) - 1).U(numIds.W)) // True indicates that the id is available
+  private val respBitmap: UInt = RegInit(0.U(numIds.W)) // false means haven't receive response
+  /** [[select]] is the oneHot code which represents the lowest bit that equals to true;
+    * Then use `OHToUInt` to get its binary value.
+    * */
+  private val select: UInt = (~(leftOR(reqBitmap) << 1)).asUInt & reqBitmap
+  io.alloc.bits := OHToUInt(select)
+  io.alloc.valid := reqBitmap.orR() // valid when there is any id hasn't sent require signal
+
+  private val clr: UInt = WireDefault(0.U(numIds.W))
+  when(io.alloc.fire()) {
+    clr := UIntToOH(io.alloc.bits)
+  }
+
+  private val set: UInt = WireDefault(0.U(numIds.W))
+  when(io.free.fire()) {
+    set := UIntToOH(io.free.bits) // this is the sourceId that finishes
+  }
+  respBitmap := respBitmap | set
+  reqBitmap := (reqBitmap & (~clr).asUInt)
+  /** when all the sources receive response*/
+  private val finishWire = respBitmap.andR()
+  when (finishWire) {
+    respBitmap := 0.U
+    reqBitmap := ((BigInt(1) << numIds) - 1).U
+  }
+  io.finish := finishWire
+}
+```
+
