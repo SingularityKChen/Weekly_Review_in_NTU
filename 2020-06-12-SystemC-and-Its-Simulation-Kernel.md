@@ -4,7 +4,7 @@ title: "[Weekly Review] SystemC and Its Simulation Kernel"
 description: "This post introduces the components of SystemC, including Modules, Interfaces, Ports, Channels, Process and Events."
 categories: [WeeklyReview]
 tags: [SystemC]
-last_updated: 2020-06-12 22:53:00 GMT+8
+last_updated: 2020-06-13 23:41:00 GMT+8
 excerpt: "This post introduces the components of SystemC, including Modules, Interfaces, Ports, Channels, Process and Events."
 redirect_from:
   - /2020/06/12/
@@ -150,11 +150,67 @@ redirect_from:
 
 #### `SC_THREAD`
 
++ Thread process is started once and only once by the simulator
+  + Once it starts to execute, it is in complete control of the simulation
+  + When terminated, it is gone forever
+  + It typically contains an infinite loop and at least a wait
++ Two way to pass control back to the simulator
+  + Wait statement – suspend the process
+  + Exit – terminate the process
++ A thread process may suspend its execution by calling `wait()`
+  + **Multi-cycle behavior** may be easily described using wait statement
+  + Sometimes `wait()` is invoked indirectly
+    + For instance, a blocking read/write to `sc_fifo` may invoke `wait()`
++ A thread process explicitly keeps its state of execution
+  + The thread remembers the suspension point and all local variables
+  + The thread starts from the suspension point when being resumed
++ The gain in expressiveness comes with a cost in performance
+  + Process suspension and resumption need coroutines
+  + Switching between coroutines (context switch) is expensive
++ `SC_CTHREAD`
+  + A variation of `SC_THREAD` triggered at every clock edge
 
+##### Syntax of Wait Statements
+
++ `wait(time)`;
++ `wait(event)`;
++ `wait(event 1 | event2)`; //any of these
++ `wait(event 1 & event2)`; //all of these
++ `wait(timeout, event)`; //event with timeout
++ `wait(timeout, event 1 | event2)`//any event with timeout
++ `wait(timeout, event 1 & event2)`//any event with timeout
++ `wait()`; // static sensitivity
+
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200613231134.png" alt="Thread Processes and Wait Statements" style="zoom:67%;" />
+
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200613232330.png" style="zoom:67%;" />
 
 #### `SC_METHOD`
 
++ Similar to the Verilog always@ block
+  + When triggered, the body is executed from the beginning to the end
++ It does not keep an implicit execution state
+  + A locally declared variable is not permanent
++ It is called based on dynamic or static sensitivity
 
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200613232446.png" style="zoom:67%;" />
+
++ The `next_trigger()` temporarily set a sensitivity list
++ The `next_trigger()` may be called repeatedly
+  + Each invocation encountered overrides the previous
+  + The last one executed before a return determines the sensitivity
++ Unlike `wait()`, calling `next_trigger()` does not suspend the process
++ Syntax of next_trigger()
+  + next_trigger(time); 
+  + next_trigger(event); 
+  + next_trigger(event 1 | event2) ; //any of these events
+  + next_trigger(event 1 & event2) ; //all of these events are required
+  + next_trigger(timeout, event); //event with timeout
+  + next_trigger(timeout, event 1 | event2); //any of these events + timeout
+  + next_trigger(timeout, event 1 & event2); //all of these events + timeout
+  + next_trigger() ; //re–establish static sensitivity
+
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200613232819.png" style="zoom:67%;" />
 
 ### Events
 
@@ -164,3 +220,59 @@ redirect_from:
   + The event object keeps a list of processes that are sensitive to it
     + Inform the scheduler of which processes to trigger
 + Events provide synchronization between processes
+
++ A SystemC event is the occurrence of an `sc_event` notification
+  + Cause processes that are sensitive to it to be triggered
++ An event has no duration (like an impulse)
+  + To observe an event, the observer must be watching for the event
+  + If an event occurs, and no processes are waiting to catch it, the event goes unnoticed
++ An event has no value
+  + It is illegal to test an event for true or false
+  + It is ok to test a Boolean set by the process that caused an event
++ Two actions to do with events
+  + Wait for an event
+  + Cause an event to occur
+
+```c++
+class sc_event { 
+    public:
+        sc_event();
+        ~sc_event(); 
+        void cancel(); 
+        void notify(); 
+        void notify(const sc_time& ); 
+        void notify(double, sc_time_unit );
+        sc_event_or_list& operator | (const sc_event& ) const; 
+        sc_event_and_list& operator & (const sc_event& ) const;
+    private: 
+        sc_event (const sc_event&); 
+        sc_event& operator = ( const sc_event& ); 
+}
+```
+
+#### Event Notification
+
++ Immediate notification - `event.notify()`
+  + Processes waiting for the event are immediately moved from the wait pool into the ready pool for execution **(before the update)**
++ Delta-delayed notification - `event.notify(SC_ZERO_TIME) `
+  + Processes waiting for a delayed notification will be executed on the next delta-cycle **(after the update)**
++ Timed notification - `event.notify(10, SC_NS) `
+  + Timed events are scheduled to occur at some time in the future
++ Remarks
+  + If a signal has had a new value written to it, processes triggered by immediate notification will see the old value of the signal, whereas processes triggered by delta-delay notification will see the new value
++ A pending delayed event notification may be canceled
+  + Immediate event cannot be canceled
+
+## Example
+
+### Asynchronous Bus
+
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200613234528.png" alt="Asynchronous Bus" style="zoom:67%;" />
+
+### Produce and Consumer
+
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200613235018.png" alt="Produce and Consumer" style="zoom:67%;" />
+
+### Initiator and Target
+
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200613235200.png" alt="Initiator and Target" style="zoom:67%;" />
