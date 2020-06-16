@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "[Weekly Review] Entropy Coding and Tunstall Coding"
+title: "[Glean] Entropy Coding and Tunstall Coding"
 description: "This post introduces the concepts of entropy coding and Tunstall coding."
-categories: [WeeklyReview]
+categories: [Glean]
 tags: [Tunstall, Entropy]
 last_updated: 2020-06-14 21:12:00 GMT+8
 excerpt: "This post introduces the concepts of entropy coding and Tunstall coding."

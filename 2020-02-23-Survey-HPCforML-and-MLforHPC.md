@@ -2,7 +2,7 @@
 layout: post
 title: "[Survey] HPCforML and MLforHPC"
 description: "the survey of HPCforML and MLforHPC"
-categories: [ReadPaper]
+categories: [ReadPaper, Survey]
 tags: [ML4HPC, HPML, HPCforML, SystemforML, MLforSystem]
 last_updated: 2020-03-07 10:32:00 GMT+8
 excerpt: "This survey contains two papers 1) Understanding ML driven HPC: Applications and Infrastructure; 2) Learning Everywhere: A Taxonomy for the Integration of Machine Learning and Simulations."

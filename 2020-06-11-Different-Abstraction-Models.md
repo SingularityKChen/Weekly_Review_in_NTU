@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "[Weekly Review] Different Abstraction Models"
+title: "[Emulate] Different Abstraction Models"
 description: "Six different abstraction models by nctu. The models includes specification model, component assembly model, bus arbitration model, cycle accurate computation and RTL model."
-categories: [WeeklyReview]
+categories: [Emulate]
 tags: [SystemC, Modelling, TLM]
 last_updated: 2020-06-12 00:24:00 GMT+8
 excerpt: "Six different abstraction models by nctu. The models includes specification model, component assembly model, bus arbitration model, cycle accurate computation and RTL model."

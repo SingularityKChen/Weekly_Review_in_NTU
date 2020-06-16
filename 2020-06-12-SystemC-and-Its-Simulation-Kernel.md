@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "[Weekly Review] SystemC and Its Simulation Kernel"
+title: "[Emulate] SystemC and Its Simulation Kernel"
 description: "This post introduces the components of SystemC, including Modules, Interfaces, Ports, Channels, Process and Events."
-categories: [WeeklyReview]
+categories: [Emulate]
 tags: [SystemC]
 last_updated: 2020-06-13 23:41:00 GMT+8
 excerpt: "This post introduces the components of SystemC, including Modules, Interfaces, Ports, Channels, Process and Events."

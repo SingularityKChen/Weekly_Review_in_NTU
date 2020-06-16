@@ -2,7 +2,7 @@
 layout: post
 title: "[Survey] MLforHPC Benchmarks "
 description: "Survey: MLforHPC Benchmarks"
-categories: [ReadPaper]
+categories: [ReadPaper, Survey]
 tags: [ML4HPC, HPML, HPC, Benchmark]
 last_updated: 2020-03-07 11:00:00 GMT+8
 excerpt: "I attached my recent survey on ML4HPC benchmarks, including three papers 1) A Modular Benchmarking Infrastructure for High-Performance and Reproducible Deep Learning; 2) HPC AI500: A Benchmark Suite for HPC AI Systems; 3) A Modular Benchmarking Infrastructure for High-Performance and Reproducible Deep Learning; and some other presentation slides."

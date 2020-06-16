@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "[Weekly Review] 3D Convolution: kernel will traverse in 3-D"
+title: "[Glean] 3D Convolution: kernel will traverse in 3-D"
 description: "This post introduces the 3D convolution."
-categories: [WeeklyReview]
+categories: [Glean]
 tags: [3DConv]
 last_updated: 2020-06-12 23:24:00 GMT+8
 excerpt: "This post introduces the 3D convolution."
