@@ -12,7 +12,7 @@ redirect_from:
 
 * Kramdown table of contents
 {:toc .toc}
-# [Different Abstraction Models](http://mapl.nctu.edu.tw/course/ESL/index.php)
+# Different Abstraction Models[^1]
 
 ![](https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200611195959.png)
 
@@ -132,3 +132,6 @@ Both computation and communication are pin- and cycle-accurate
 + Wrappers are used to bridge the models of different abstractions
 
 <img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200612003453.png" alt="Communication Refinement" style="zoom:67%;" />
+
+[^1]: [IOC5080(5940) System Model Design and Verification](http://mapl.nctu.edu.tw/course/ESL/index.php), Department of Computer Science, National Chiao-Tung University
+

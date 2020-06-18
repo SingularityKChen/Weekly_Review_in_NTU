@@ -12,7 +12,7 @@ redirect_from:
 
 * Kramdown table of contents
 {:toc .toc}
-# Untimed TLM in SystemC
+# Untimed TLM in SystemC[^1]
 
 ## Untimed TLM – Data Flow Modeling
 
@@ -84,3 +84,5 @@ redirect_from:
   + Combination of a given simulation time and data-dependent exit conditions can often be the best solution
 
 <img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200616223903.png" alt="terminate the simulation" style="zoom:67%;" />
+
+[^1]: [IOC5080(5940) System Model Design and Verification](http://mapl.nctu.edu.tw/course/ESL/index.php), Department of Computer Science, National Chiao-Tung University

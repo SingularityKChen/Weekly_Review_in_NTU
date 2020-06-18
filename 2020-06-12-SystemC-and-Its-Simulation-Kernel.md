@@ -12,7 +12,7 @@ redirect_from:
 
 * Kramdown table of contents
 {:toc .toc}
-# SystemC and Its Simulation Kernel
+# SystemC and Its Simulation Kernel[^1]
 
 <img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200612002808.png" alt="TLM-based SoC Design" style="zoom: 50%;" />
 
@@ -276,3 +276,5 @@ class sc_event {
 ### Initiator and Target
 
 <img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200613235200.png" alt="Initiator and Target" style="zoom:67%;" />
+
+[^1]: [IOC5080(5940) System Model Design and Verification](http://mapl.nctu.edu.tw/course/ESL/index.php), Department of Computer Science, National Chiao-Tung University
