@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "[Tutorial] Build SystemC Environment"
-description: "How to Build SystemC Environment in Windows."
+description: "How to Build SystemC Environment in Windows and Linux Ubuntu."
 categories: [Tutorial]
 tags: [SystemC]
-last_updated: 2020-06-18 14:48:00 GMT+8
-excerpt: "How to Build SystemC Environment in Windows."
+last_updated: 2020-06-23 22:02:00 GMT+8
+excerpt: "How to Build SystemC Environment in Windows and Linux Ubuntu."
 redirect_from:
   - /2020/06/18/
 ---
@@ -101,6 +101,38 @@ set (CMAKE_CXX_STANDARD 14)
 ```
 
 And then `rebuild` the project, install it again.
+
+## Ubuntu 20.04 LTS
+
+Added on 23 June, 2020.
+
+------
+
+I followed the instructions of [this video](https://www.youtube.com/watch?v=rLBScPm_bis) and set up the environment for Ubuntu 20.04 LTS.
+
+You need to install these firstly: `cmake`, `g++`, and `doxygen`.
+
+```shell
+# check the softwares
+g++ -v
+cmake --version
+doxygen
+# if you don't have, then you need to `apt-get install xxx`
+# enter the directory you download the file
+cd systemc-2.3.3/
+# create a directory to generate some temp files
+mkdir buildDebug
+cd buildDebug/
+# -DCMAKE_INSTALL_PREFIX is the directory you install SystemC
+# be care of -DCMAKE_CXX_STANDARD
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEBUG_POSTFIX="-d" -DCMAKE_INSTALL_PREFIX=$HOME/systemc-2.3.3-install -DCMAKE_CXX_STANDARD=14 -DBUILD_SOURCE_DOCUMENTATION=ON ..
+# -j means the number of jobs run parallelly
+make -j 6
+make check -j 6
+make install
+```
+
+Then you can find `include`, `lib` file folders under that directory.
 
 # Example `CMakeLists`
 
