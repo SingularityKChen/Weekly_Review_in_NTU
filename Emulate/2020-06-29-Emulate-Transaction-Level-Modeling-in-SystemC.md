@@ -7,7 +7,7 @@ tags: [SystemC, TLM]
 last_updated: 2020-06-25 22:19:00 GMT+8
 excerpt: ""
 redirect_from:
-  - /2020/06/25/
+  - /2020/06/29/
 ---
 
 * Kramdown table of contents
