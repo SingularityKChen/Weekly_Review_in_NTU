@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "[Emulate] All-Reduce Operations"
+title: "[Glean] All-Reduce Operations"
 description: "The all reduce operations are one kind of collective operations in NCCL and MPI lib."
-categories: [Emulate]
+categories: [Glean]
 tags: [AllReduce]
-last_updated: 2020-06-28 17:41:00 GMT+8
+last_updated: 2020-06-29 09:21:00 GMT+8
 excerpt: "The all reduce operations are one kind of collective operations in NCCL and MPI lib."
 redirect_from:
   - /2020/06/28/

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "[Emulate] Round-Robin Arbitration"
+title: "[Glean] Round-Robin Arbitration"
 description: "Round robin arbitration is a scheduling scheme which gives to each requestor its share of using a common resource for a limited time or data elements."
-categories: [Emulate]
+categories: [Glean]
 tags: [RoundRobin]
-last_updated: 2020-06-28 17:10:00 GMT+8
+last_updated: 2020-06-29 09:23:00 GMT+8
 excerpt: "Round robin arbitration is a scheduling scheme which gives to each requestor its share of using a common resource for a limited time or data elements."
 redirect_from:
   - /2020/06/25/

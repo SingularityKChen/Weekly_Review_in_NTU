@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "[Emulate] Operator Fusion"
+title: "[Glean] Operator Fusion"
 description: "There are many opportunities, where fused operators—in terms of fused chains of basic operators—can significantly improve performance."
-categories: [Emulate]
+categories: [Glean]
 tags: [OperatorFusion]
-last_updated: 2020-06-28 17:27:00 GMT+8
+last_updated: 2020-06-29 09:20:00 GMT+8
 excerpt: "There are many opportunities, where fused operators—in terms of fused chains of basic operators—can significantly improve performance."
 redirect_from:
   - /2020/06/28/
