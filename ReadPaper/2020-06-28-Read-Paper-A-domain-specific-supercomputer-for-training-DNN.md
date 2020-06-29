@@ -4,7 +4,7 @@ title: "[Read Paper] A Domain-Specific Supercomputer for Training Deep Neural Ne
 description: "Reading note of A Domain-Specific Supercomputer for Training Deep Neural Networks"
 categories: [ReadPaper]
 tags: [TPU, DLA]
-last_updated: 2020-06-28 11:08:00 GMT+8
+last_updated: 2020-06-29 20:06:00 GMT+8
 excerpt: "This paper introduces the TPU v2 and v3."
 redirect_from:
   - /2020/06/28/
