@@ -19,9 +19,9 @@ This article contains more details of `Eyeriss V2` than [another Eyeriss V2 pape
 And here is the list of `Eyeriss` series papers:
 
 + Eyeriss v2: A Flexible Accelerator for Emerging Deep Neural Networks on Mobile Devices
-+ [Eyeriss v2: A Flexible and High-Performance Accelerator for Emerging Deep Neural Networks](../../../../2019/12/29/Read-Paper-Eyeriss-v2-A-Flexible-and-High-Performance-Accelerator-for-Emerging-Deep-Neural-Networks/)
-+ [Eyeriss: A Spatial Architecture for Energy-Efficient Dataflow for Convolutional Neural Networks](../../../../2019/12/29/Read-Paper-Eyeriss-A-Spatial-Architecture-for-Energy-Efficient-Dataflow-for-Convolutional-Neural-Networks/)
-+ [Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks](../../../../2019/12/29/Read-Paper-Eyeriss-An-Energy-Efficient-Reconfigurable-Accelerator-for-Deep-Convolutional-Neural-Networks/)
++ [Eyeriss v2: A Flexible and High-Performance Accelerator for Emerging Deep Neural Networks](../../../../2019/12/29/Read-Paper-Eyeriss-v2-A-Flexible-and-High-Performance-Accelerator-for-Emerging-DNN/)
++ [Eyeriss: A Spatial Architecture for Energy-Efficient Dataflow for Convolutional Neural Networks](../../../../2019/12/29/Read-Paper-Eyeriss-A-Spatial-Architecture-for-Energy-Efficient-Dataflow-for-CNN/)
++ [Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks](../../../../2019/12/29/Read-Paper-Eyeriss-An-Energy-Efficient-Reconfigurable-Accelerator-for-DNN/)
 
 ## Hierarchical Architecture of Eyeriss
 

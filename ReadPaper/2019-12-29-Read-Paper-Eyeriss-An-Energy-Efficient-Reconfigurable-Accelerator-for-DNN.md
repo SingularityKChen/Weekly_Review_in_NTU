@@ -15,7 +15,7 @@ redirect_from:
 
 # Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks
 
-Compared to the [Eyeriss v2](../Read-Paper-Eyeriss-v2-A-Flexible-and-High-Performance-Accelerator-for-Emerging-Deep-Neural-Networks/) and [Spatial Architecture](../Read-Paper-Eyeriss-A-Spatial-Architecture-for-Energy-Efficient-Dataflow-for-Convolutional-Neural-Networks/), this article provides a more detailed explanation on the system architecture of the NoC communication as well as mapping of the PE sets. Also, it introduces an RLC compressed form to reduce the data size as related components in PE architecture.
+Compared to the [Eyeriss v2](../Read-Paper-Eyeriss-v2-A-Flexible-and-High-Performance-Accelerator-for-Emerging-DNN/) and [Spatial Architecture](../Read-Paper-Eyeriss-A-Spatial-Architecture-for-Energy-Efficient-Dataflow-for-CNN/), this article provides a more detailed explanation on the system architecture of the NoC communication as well as mapping of the PE sets. Also, it introduces an RLC compressed form to reduce the data size as related components in PE architecture.
 
 Plus, this article mentions CNN biases, but there is nothing related to the biases in the architecture it describes.
 

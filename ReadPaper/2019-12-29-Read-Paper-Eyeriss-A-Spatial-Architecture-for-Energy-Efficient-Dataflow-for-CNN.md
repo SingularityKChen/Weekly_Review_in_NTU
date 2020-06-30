@@ -15,7 +15,7 @@ redirect_from:
 
 # Eyeriss: A Spatial Architecture for Energy-Efficient Dataflow for Convolutional Neural Networks
 
-Compared to the [Eyeriss v2](../Read-Paper-Eyeriss-v2-A-Flexible-and-High-Performance-Accelerator-for-Emerging-Deep-Neural-Networks/), this article provides a more detailed explanation of *Row Stationary*, a baseline storage area for a given number of PEs and the energy cost estimation for RS reuse pattern.
+Compared to the [Eyeriss v2](../Read-Paper-Eyeriss-v2-A-Flexible-and-High-Performance-Accelerator-for-Emerging-DNN/), this article provides a more detailed explanation of *Row Stationary*, a baseline storage area for a given number of PEs and the energy cost estimation for RS reuse pattern.
 
 ---
 
