@@ -4,8 +4,8 @@ title: "[Read Paper] TEA-DNN: the Quest for Time-Energy-Accuracy Co-optimized De
 description: "Reading note of TEA-DNN: the Quest for Time-Energy-Accuracy Co-optimized Deep Neural Networks"
 categories: [ReadPaper]
 tags: [DNN, ParetoOptimal]
-last_updated: 2020-06-29 22:50:45 GMT+8
-excerpt: 
+last_updated: 2020-07-05 10:07:45 GMT+8
+excerpt: "This paper introduces a method to optimize DNN with Pareto-optimal models and Bayesian optimization."
 redirect_from:
   - /2020/06/28/
 ---
@@ -19,7 +19,7 @@ redirect_from:
 + NAS with considering the available hardware resources
 + Leverage energy and execution time
 + To my understanding:
-+ Find an optimal CNN structure for one target hardware platform
+  + Find an optimal CNN structure for one target hardware platform
 
 Assume that classification error is not affected by the specific hardware a network is run on
 

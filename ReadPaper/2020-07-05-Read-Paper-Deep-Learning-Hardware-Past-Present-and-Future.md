@@ -5,7 +5,7 @@ description: "Reading note of Deep Learning Hardware: Past, Present, and Future"
 categories: [ReadPaper]
 tags: [Survey, DLA]
 last_updated: 2020-07-05 10:02:26 GMT+8
-excerpt: "This paper introduce the following aspects: 1) identifies trends in deep learning research that will influence hardware architectures and software platforms of the future; 2) Five DL use cases with different hardware requirements; 3) Present and Future Deep-Learning Architectures; 4) Requirements for Future DL Hardware and Software"
+excerpt: "This paper introduces the following aspects: 1) identifies trends in deep learning research that will influence hardware architectures and software platforms of the future; 2) Five DL use cases with different hardware requirements; 3) Present and Future Deep-Learning Architectures; 4) Requirements for Future DL Hardware and Software"
 redirect_from:
   - /2020/07/05/
 ---
@@ -14,7 +14,7 @@ redirect_from:
 {:toc .toc}
 # Deep Learning Hardware: Past, Present, and Future
 
-This paper introduce the following aspects:
+This paper introduces the following aspects:
 
 + identifies trends in deep learning research that will influence hardware architectures and software platforms of the future
 + Five DL use cases with different hardware requirements
