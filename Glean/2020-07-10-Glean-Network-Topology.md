@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "[Glean] Network Topology"
-description: "Network topology is the arrangement of the elements of a communication network. Including point-to-point, bus, star, ring or circular, mesh, tree, hybrid, or daisy chain."
+description: "Network topology is the arrangement of the elements of a communication network. Including point to point, bus, star, ring or circular, mesh, tree, hybrid, or daisy chain."
 categories: [Glean]
 tags: [Mesh, Network]
 last_updated: 2020-07-10 20:20:00 GMT+8
-excerpt: "Network topology is the arrangement of the elements of a communication network. Including point-to-point, bus, star, ring or circular, mesh, tree, hybrid, or daisy chain."
+excerpt: "Network topology is the arrangement of the elements of a communication network. Including point to point, bus, star, ring or circular, mesh, tree, hybrid, or daisy chain."
 redirect_from:
   - /2020/07/10/
 ---
