@@ -4,8 +4,8 @@ title: "[Workshop] ScaledML: Moore's Law in the age of AI Chips"
 description: "The workshop was presented by Jim Keller, Intel."
 categories: [Workshop]
 tags: [ScaledML]
-last_updated: 2020-07-12 10:50:00 GMT+8
-excerpt: 
+last_updated: 2020-07-13 14:46:00 GMT+8
+excerpt: "The presentation by Jim Keller, Intel. Introduces the Moore's law, complexity limits and technology optimism for AI chips."
 redirect_from:
   - /2020/07/12/
 ---
