@@ -4,7 +4,7 @@ title: "[Read Paper] The N3XT Approach to Energy-Efficient Abundant-Data Computi
 description: "Reading note of The N3XT Approach to Energy-Efficient Abundant-Data Computing"
 categories: [ReadPaper]
 tags: [N3XT, 3DIC, RRAM]
-last_updated: 2020-07-13 20:33:00 GMT+8
+last_updated: 2020-07-14 14:45:00 GMT+8
 excerpt: "This paper introduces the framework of N3XT as well as its evaluation methodology. It also mentions the RRAM endurance resiliency."
 redirect_from:
   - /2020/07/14/
