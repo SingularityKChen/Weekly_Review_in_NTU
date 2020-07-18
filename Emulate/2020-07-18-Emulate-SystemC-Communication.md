@@ -4,7 +4,7 @@ title: "[Emulate] SystemC Communication Ports"
 description: "SystemC Communication ports. Including chapter 11 and 12 of the book SystemC from the Ground Up."
 categories: [Emulate]
 tags: [SystemC]
-last_updated: 2020-07-18 11:45:00 GMT+8
+last_updated: 2020-07-18 12:30:00 GMT+8
 excerpt: "SystemC Communication ports. Including chapter 11 and 12 of the book SystemC from the Ground Up. Including the concepts of interface, port and channel."
 redirect_from:
   - /2020/07/18/

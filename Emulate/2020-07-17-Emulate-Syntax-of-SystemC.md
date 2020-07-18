@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "[Emulate] Syntaxes of SystemC"
-description: "Syntaxes of SystemC, inculuding the different syntaxes of SystemC module and constructors."
+description: "Syntaxes of SystemC, including the different syntaxes of SystemC module and constructors."
 categories: [Emulate]
-tags: [SystemC, TLM]
+tags: [SystemC]
 last_updated: 2020-07-17 11:45:00 GMT+8
 excerpt: "This blog introduces the different syntaxes of SystemC module and constructors."
 redirect_from:

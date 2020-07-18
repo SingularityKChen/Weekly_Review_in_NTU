@@ -3,7 +3,7 @@ layout: post
 title: "[Emulate] Structure Design Hierarchy"
 description: "Structure Design Hierarchy, chapter 10 of the book From the Ground Up."
 categories: [Emulate]
-tags: [SystemC, TLM]
+tags: [SystemC]
 last_updated: 2020-07-17 17:50:00 GMT+8
 excerpt: "This post introduces six approaches of design hierarchy. It's the chapter 10 of the book From the Ground Up."
 redirect_from:

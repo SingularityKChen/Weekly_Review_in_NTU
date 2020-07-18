@@ -3,7 +3,7 @@ layout: post
 title: "[Emulate] Overview of SystemC Components"
 description: "Overview of SystemC Components, the second chapter of from the ground up."
 categories: [Emulate]
-tags: [SystemC, TLM]
+tags: [SystemC]
 last_updated: 2020-07-17 10:36:00 GMT+8
 excerpt: "Overview of SystemC Components, the second chapter of from the ground up. It introduces the module and hierarchy as well as the three stages of SystemC simulation."
 redirect_from:
