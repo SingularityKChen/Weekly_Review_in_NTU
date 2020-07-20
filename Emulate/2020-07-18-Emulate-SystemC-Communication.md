@@ -4,8 +4,8 @@ title: "[Emulate] SystemC Communication Ports"
 description: "SystemC Communication ports. Including chapter 11 and 12 of the book SystemC from the Ground Up."
 categories: [Emulate]
 tags: [SystemC]
-last_updated: 2020-07-18 12:30:00 GMT+8
-excerpt: "SystemC Communication ports. Including chapter 11 and 12 of the book SystemC from the Ground Up. Including the concepts of interface, port and channel."
+last_updated: 2020-07-20 17:33:00 GMT+8
+excerpt: "SystemC Communication ports. Including chapter 11 and 12 of the book SystemC from the Ground Up. It introduces the communication ports in SystemC, port array, exports and shows all connectivity possibilities in SystemC as a handy reference."
 redirect_from:
   - /2020/07/18/
 ---
@@ -185,9 +185,147 @@ POL is of type `sc_port_policy` and it is an enumerated type and has three legal
 
 The value of POL enables different checking regarding the connectivity to the port.
 
+`SC_ALL_BOUND` requires that there are N and only N channels connected to the port
 
+### N
+
+$N$ indicates **the number of channels to be connected to the port.** When $N = 0$, we have a special case that allows an almost unlimited number of ports. In other words, you may connect any number of channels to the port.
+
+### Example of `sc_port<T>` array connectivity
+
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200720163109.png" alt="Example of sc_port<T style="zoom:50%;" > array connectivity" />
+
+```c++
+//FILE: Switch.h 
+SC_MODULE(Switch) { 
+    sc_port<sc_fifo_in_if<int> 
+        ,5 
+        ,SC_ONE_OR_MORE_BOUND 
+        > T1_ip;
+    sc_port<sc_signal_inout_if<bool> 
+        ,0
+        > request_op; 
+    ...
+};
+```
+
+```c++
+//FILE: Board.h 
+#include "Switch.h" 
+SC_MODULE(Board) { 
+    Switch switch_i;
+    sc_fifo<int> t1A, t1B, t1C, t1D; 
+    sc_signal< bool> request[9]; 
+    SC_CTOR(Board): switch_i("switch_i") 
+    {
+        // Connect 4 T1 channels to the switch 
+        switch_i.T1_ip(t1A); 
+        switch_i.T1_ip(t1B); 
+        switch_i.T1_ip(t1C); 
+        switch_i.T1_ip(t1D);
+        // Connect 9 request channels to the 
+        // switch request output ports 
+        for (unsigned i=0;i!=9;i++) { 
+            switch_i.request_op(request[i]); 
+        }//endfor 
+        ...
+    }//end constructor 
+    ...
+};
+```
+
+This class also provides a method, `size()`, that may be used to **examine the declared port size**. This method is useful for situations where the array bounds are unknown (i.e., $N = 0$ or using `SC_ONE_OR_MORE_BOUND` or `SC_ZERO_OR_MORE_BOUND` ).
+
+```c++
+//FILE: Switch.cpp 
+void Switch::switch_thread() { 
+    // Initialize requests 
+    for (unsigned i=0;i!=request_op.size();i++) { 
+        request_op[i]->write(true); 
+    }//endfor
+    // Startup after first port is activated 
+    wait(T1_ip[0]->data_written_event() 
+        |T1_ip[1]->data_written_event() 
+        |T1_ip[2]->data_written_event() 
+        |T1_ip[3]->data_written_event()
+    );
+    while(true) { 
+        for (unsigned i=0;i!=T1_ip.size();i++) { 
+            // Process each port... 
+            int value = T1_ip[i]->read(); 
+        }//endfor 
+    }//endwhile
+}//end Switch::switch_thread
+```
 
 ## SystemC Exports
+
+### The concept of the export
+
+The idea of an `sc_export<T>` is to move the channel **inside the defining module**, thus **hiding some of the connectivity details** and using the port externally as though it were a channel.
+
+### Why need the export
+
+For an IP provider, it may be desirable to export only specific channels and keep everything else private. Thus, `sc_export<T>` allows **control over the interface**. A hidden interface has the benefit of making **the channel simpler to read and understand** in the module where the IP is instantiated.
+
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200720171620.png" alt="Example of vendor view and customer view of IP" style="zoom:50%;" />
+
+Another reason for using `sc_export<T>` is to **provide multiple interfaces** at the top level.
+
+Another reason for using `sc_export<T>` is communications efficiency down the SystemC hierarchy.
+
+Another powerful possibility with `sc_export<T>` is to let interfaces be passed up the design hierarchy.
+
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200720171356.png" alt="sc_export used with hierarchy" style="zoom:50%;" />
+
+### Example of export
+
+```c++
+// Example of simple sc_export declaration
+SC_MODULE(clock_gen) { 
+    sc_export<sc_signal<bool>> clock_xp; 
+    sc_signal<bool> oscillator; 
+    SC_CTOR(clock_gen) { 
+        SC_METHOD(clock_method);
+        clock_xp(oscillator); 
+        // connect sc_signal channel
+        // to export clock_xp 
+        oscillator.write(false); 
+    }
+    void clock_method() { 
+        oscillator.write(!oscillator.read()); 
+        next_trigger(10,SC_NS);
+    }
+};
+```
+
+```c++
+// Example of simple sc_export instantiation
+#include "clock_gen.h" 
+…
+clock_gen clock_gen_i(“clock_gen_i”); 
+collision_detector cd_i(“cd_i”); 
+// Connect clock
+cd_i.clock(clock_gen_i.clock_xp);
+…
+```
+
+## Connectivity Revisited
+
+<img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20200720172305.png" alt="Connectivity possibilities" style="zoom:67%;" />
+
+This figure is a handy reference when reviewing the SystemC connection rules, which are listed below:
+1. **A process** may communicate with **another process** in the same module **using a channel**. For example, process pr2 to process pr3 via interface ifX on channel c2i.
+2. **A process** may communicate with **another process** in the same module **using an event** to synchronize exchanges of information through data variables instantiated at the module level (e.g., within the module class definition). For example,
+process pr2 to process pr1 via event ev1.
+3. **A process** may communicate with **a process** upwards in the design **hierarchy** using **the interfaces** accessed via `sc_port<T>`. For example, process pr3 via port p4 using interface if4.
+4. **A process** may communicate with **processes in submodule** instances via **interfaces to channels** connected to the submodule ports. For example, process pr3 to module mi2 via interface ifZ on channel c3i.
+5. **An `sc_export<T>`** may connect to **another `sc_export<T>`** via **interfaces** to local channels. For example, port p5 to channel c3i using interface if5.
+6. **An `sc_port<T>`** may connect **directly** to **an `sc_port<T>`** of submodules. For example, port p1 is connected to port pA of submodule mi1.
+7. **An `sc_export<T>`**may connect **directly** to **an `sc_export<T>`** of a submodule. For example, port p6 is directly connected to port pG of submodule mi1.
+8. **An `sc_port<T>`** may connect indirectly to **a process** by letting the process access the **interface**. This is just a process accessing a port described previously. For example, process pr1 communicates with submodule mi1 through interface ifW.
+9. **An `sc_port<T,N>` array** may be used to create **multiple ports** using the same
+interface. For example, $pD[0]$ and $pD[1]$ of submodule mi2.
 
 
 
