@@ -5,7 +5,7 @@ description: "Reading note of Code compression for embedded VLIW processors usin
 categories: [ReadPaper]
 tags: [VLIW, RISC, Compression, Tunstall, V2F]
 last_updated: 2020-08-28 16:00:00 GMT+8
-excerpt: "In this paper, it introduces a compress method which uses variable-to-fixed coding schemes based on either Tunstall coding or arithmetic coding to overcome the communication bottleneck between memory and CPU, especially for RISC or VLIW processors, which have a "code size bloating" problem compare to CISC processors."
+excerpt: "In this paper, it introduces a compress method which uses variable-to-fixed coding schemes based on either Tunstall coding or arithmetic coding to overcome the communication bottleneck between memory and CPU, especially for RISC or VLIW processors, which have a code size bloating problem compare to CISC processors."
 redirect_from:
   - /2020/08/26/
 ---
