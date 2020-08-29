@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "[Glean] Code bloat"
+title: "[Glean] Content-addressable memory"
 description: "Content-addressable memories (CAMs) are hardware search engines that are much faster than algorithmic approaches for search-intensive applications. CAMs are composed of conventional semiconductor memory (usually SRAM) with added comparison circuitry that enable a search operation to complete in a single clock cycle. The two most common search-intensive tasks that use CAMs are packet forwarding and packet classification in Internet routers. I introduce CAM architecture and circuits by first describing the application of address lookup in Internet routers. Then we describe how to implement this lookup function with CAM."
 categories: [CAM, Cache]
 tags: [CodeBloat]
-last_updated: 2020-08-28 14:57:00 GMT+8
+last_updated: 2020-08-28 21:57:00 GMT+8
 excerpt: "Content-addressable memories (CAMs) are hardware search engines that are much faster than algorithmic approaches for search-intensive applications. CAMs are composed of conventional semiconductor memory (usually SRAM) with added comparison circuitry that enable a search operation to complete in a single clock cycle. The two most common search-intensive tasks that use CAMs are packet forwarding and packet classification in Internet routers. I introduce CAM architecture and circuits by first describing the application of address lookup in Internet routers. Then we describe how to implement this lookup function with CAM."
 redirect_from:
   - /2020/08/28/
