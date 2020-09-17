@@ -2,7 +2,7 @@
 layout: post
 title: "[Glean] Hardware/Software Codesign"
 description: "As the name implies, Hardware/Software Codesign (HSCD) denotes design methodologies for electronic systems that exploit the trade-offs and the synergy of Hardware (HW) and Software (SW)."
-categories: [CAM, Cache]
+categories: [Glean]
 tags: [Codesign]
 last_updated: 2020-08-29 20:13:00 GMT+8
 excerpt: "As the name implies, Hardware/Software Codesign (HSCD) denotes design methodologies for electronic systems that exploit the trade-offs and the synergy of Hardware (HW) and Software (SW)."
