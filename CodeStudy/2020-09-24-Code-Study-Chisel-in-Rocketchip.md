@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[CodeStudy] Some Chisel details in the project RocketChip"
-description: 
+description: "Learned some tips of Chisel via RocketChip. Here includes come implicit classes, and one implementation of a gray counter."
 categories: [CodeStudy]
 tags: [Chisel, RoeketChip, grey, implicit class]
 last_updated: 2020-09-24 22:21:00 GMT+8
