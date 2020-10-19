@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Tutorial] Build SystemC Environment"
+title: "[Tutorial] Layout Two Graphs at One Main Graph"
 description: "How to layout two graphs at one main graph in Latex"
 categories: [Tutorial]
 tags: [Latex]
