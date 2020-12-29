@@ -4,7 +4,7 @@ title: "[Tutorial] Configure and Run Pulpissimo"
 description: "From install gcc and SDK to Run simple runtime examples for Pulpissimo"
 categories: [Tutorial]
 tags: [Pulpissimo, Pulp]
-last_updated: 2020-12-21 21:53:00 GMT+8
+last_updated: 2020-12-29 21:06:00 GMT+8
 excerpt: "From install gcc and SDK to Run simple runtime examples for Pulpissimo"
 redirect_from:
   - /2020/12/20/
@@ -188,10 +188,11 @@ Setting up for RTL simulation
 Setting up VSIM
 ```
 
-Then you need to source this file manually at another directory.
+Then you need to rebuild the RTL simulation platform and you'll get the `sourceme.sh`:
 
 ```bash
-source pulp-sdk/pkg/sdk/dev/sourceme.sh
+source setup/vsim.sh
+make build
 ```
 
 Otherwise it will say:
@@ -200,6 +201,8 @@ Otherwise it will say:
 Makefile:6: /install/rules/pulp_rt.mk: No such file or directory
 make: *** No rule to make target '/install/rules/pulp_rt.mk'.  Stop
 ```
+
+I recommend you to source the `./pulp-sdk/sourceme.sh` again after this.
 
 #### Run `hellow`
 
@@ -218,4 +221,6 @@ make clean all
 make run vsim/script=export_run.tcl
 ```
 
-But actually I can not get the waveform through they said they can.
+However, I found that it's quite slow to generate the `.vcd` file and open it using `gtkwave`.
+
+Therefore, you can use the GUI to simulate and monitor the waveform.
