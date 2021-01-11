@@ -64,7 +64,7 @@ As we need to use different languages like SystemVerilog or Verilog or C or Pyth
 1. We can define various random scenarios in UVM to model the firmware operation sequences which can eventually **drive the existing lower-level IP-UVM sequences**. This way we can scale-up the IP level random testcases to SoC level and do the exhaustive regression testing at the SoC level too, but still there may be many challenges of achieving coverage closure **due to redundant testcases and slow simulation speed**.[^3]
 2. By **using PSS language** we can define the verification intent of any design IP/Chip/SoC and generate the verification environment in any language [testcases for simulation / emulation / FPGA prototyping] using the EDA tool.[^2]
 
-## Hardware/Software Co-verification Using Virtual Platform with Hardware Emulation and Acceleration
+## Hardware/Software Co-verification Using Virtual Platform with Hardware Emulation and Acceleration[^5]
 
 ### Slow to compile
 
