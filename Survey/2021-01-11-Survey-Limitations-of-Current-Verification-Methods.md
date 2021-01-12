@@ -4,7 +4,7 @@ title: "[Survey] Limitations of Current Verification Methods"
 description: "This post introduces the limitations of current verification methods, including formal verification, constrained random verification (CRV) and hardware-software co-verification using virtual platform with hardware emulation and acceleration."
 categories: [Survey]
 tags: [verification, formal, CRV, co-verification]
-last_updated: 2021-01-12 22:17:00 GMT+8
+last_updated: 2021-01-12 22:43:00 GMT+8
 excerpt: "This post introduces the limitations of current verification methods, including formal verification, constrained random verification (CRV) and hardware-software co-verification using virtual platform with hardware emulation and acceleration."
 redirect_from:
   - /2021/01/11/
@@ -33,17 +33,6 @@ The other usage of formal verification is for quick verification of protocol ide
 
 Bridging the gap between an abstract model and a concrete model is a problem recognized by the formal verification community even before ESL research has came onto the scene. This is because **formal verification requires abstract models in order to make verification possible**, and it is suggested that the correspondence between the abstract models and implementation can be verified through refinement techniques. However, **all these techniques only work well for layers that are close to each other in terms of abstraction level**, and there is still no practical way to link formally solvable abstract model to the RTL implementation at this time.
 
-### State explosion problem[^4]
-
-In a n-bit counter, the number of states of the counter is exponential in the number of bits, i.e., $2^n$. In model checking we refer to this problem as the state explosion problem. All model checkers suffer from it.
-
-**Solutions**:
-
-1. One of the first major advances was symbolic model checking with **binary decision diagrams** (BDDs). In this approach, **a set of states is represented by a BDD instead of by listing each state individually**. The BDD representation is often exponentially smaller in practice. Model checking with BDDs is performed using a fixed point algorithm. 
-2. Another major advance is the **partial order reduction**, which e**xploits the independence of actions** in a system with asynchronous composition of processes. 
-3. A third major advance is **counterexample-guided abstraction refinement**, which adaptively tries to find **an appropriate level refinement**, precise enough to verify the property of interest yet not burdened with irrelevant detail that slows down verification. 
-4. Finally, **bounded model checking** exploits fast Boolean satisfiability (SAT) solvers to search for counterexamples of bounded length.
-
 ## Constrained Random Verification
 
 ### Slow simulation speed and resources consumption with large design
@@ -59,6 +48,8 @@ Simulation can be very slow if the design is large. Also, as the testcases are r
 
 As we need to use different languages like SystemVerilog or Verilog or C or Python to create the verification environment at different levels like IPs, Sub-Systems, Chips, and SoCs, we may not be able to reuse the IP level testcases/verification environments at the SoC level. So, usually, we rewrite/modify the IP level testcases to use them at the SoC level. This is completely a manual process and it’s more time-consuming.[^2]
 
+Actually, this is not a really limitation of this method, but an engineering module design problem.
+
  **Solutions**: 
 
 1. We can define various random scenarios in UVM to model the firmware operation sequences which can eventually **drive the existing lower-level IP-UVM sequences**. This way we can scale-up the IP level random testcases to SoC level and do the exhaustive regression testing at the SoC level too, but still there may be many challenges of achieving coverage closure **due to redundant testcases and slow simulation speed**.[^3]
@@ -68,7 +59,7 @@ As we need to use different languages like SystemVerilog or Verilog or C or Pyth
 
 Emulation is the verification method between the simulation and the FPGA prototype, which is faster than the simulation and able to provide more details than the FPGA prototype.
 
-The emulator provded by Candance named Palladium[^6], which could execute both the synthesisable RTL deisgn and behaviour test bench model.
+The emulator provided by Candance named Palladium[^6], which could execute both the synthesizable RTL design and behavior test bench model.
 
 ### Slow to compile
 
@@ -80,7 +71,7 @@ One of the factors that affect selection of an emulation system is the compile (
 
 + Compiling several versions of the design at one time and execute them.
 
-### The design is too big to fit into thr target hardware[^7]
+### The design is too big to fit into the target hardware[^7]
 
 FPGA-based design emulation is very fast, but involves structural drawbacks. The major problem occurs, if the number of gates exceeds the total or a critical gate count of the available target FPGA after synthesis. Then, the optimal clock rate of the design cannot be achieved.
 
@@ -91,6 +82,10 @@ FPGA-based design emulation is very fast, but involves structural drawbacks. The
 ### Difficult to debug without other verification methods
 
 Also, the debug method based on the hardware emulation and acceleration is not as advanced as simulation. In some complex situations, you need to back to the slow simulation to debug after you find a bug.
+
+Solution:
+
++ Emulators like Palladium can provide some visible debugging information and trigger the signal by adding those information into the model. However, writing the model, per se, is quite tough.
 
 [^1]: J. C. Chang, “Formal Veriﬁcation Along with Design for Transactional Models,” UCB.
 [^2]: S. P. R, “PSS – Portable Test and Stimulus Standard,” Maven Silicon, Mar. 24, 2020. https://www.maven-silicon.com/blog/portable-test-and-stimulus-standard/ (accessed Jan. 11, 2021).
