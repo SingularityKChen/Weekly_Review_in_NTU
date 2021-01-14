@@ -59,7 +59,7 @@ Actually, this is not a really limitation of this method, but an engineering mod
 
 Emulation is the verification method between the simulation and the FPGA prototype, which is faster than the simulation and able to provide more details than the FPGA prototype.
 
-The emulator provided by Candance named Palladium[^6], which could execute both the synthesizable RTL design and behavior test bench model.
+The emulator provided by Cadence named Palladium[^6], which could execute both the synthesizable RTL design and behavior test bench model.
 
 ### Slow to compile
 
