@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "[Survey] Current Verification Methods And Their Limited Situations"
-description: "This post introduces the limitations of current verification methods, including formal verification, constrained random verification (CRV) and hardware-software co-verification using virtual platform with hardware emulation and acceleration."
+description: "This post introduces the current verification methods, steps and their limitations, including formal verification, constrained random verification (CRV) and hardware-software co-verification using virtual platform with hardware emulation and acceleration."
 categories: [Survey]
 tags: [verification, formal, CRV, co-verification]
-last_updated: 2021-01-19 14:01:00 GMT+8
-excerpt: "This post introduces the limitations of current verification methods, including formal verification, constrained random verification (CRV) and hardware-software co-verification using virtual platform with hardware emulation and acceleration."
+last_updated: 2021-01-24 23:37:00 GMT+8
+excerpt: "This post introduces the current verification methods, steps and their limitations, including formal verification, constrained random verification (CRV) and hardware-software co-verification using virtual platform with hardware emulation and acceleration."
 redirect_from:
   - /2021/01/11/
 ---
@@ -52,7 +52,7 @@ Actually, this is not a really limitation of this method, but an engineering mod
 1. We can define various random scenarios in UVM to model the firmware operation sequences which can eventually **drive the existing lower-level IP-UVM sequences**. This way we can scale-up the IP level random testcases to SoC level and do the exhaustive regression testing at the SoC level too, but still there may be many challenges of achieving coverage closure **due to redundant testcases and slow simulation speed**.[^3]
 2. By **using PSS language** we can define the verification intent of any design IP/Chip/SoC and generate the verification environment in any language [testcases for simulation / emulation / FPGA prototyping] using the EDA tool.[^2]
 
-## Formal Verification
+## Static Verification (Especially formal verification)
 
 ### What is static verification[^5]
 
@@ -64,9 +64,9 @@ In contrast, SystemVerilog Assertions (properties) can test the design in all po
 
 Additional applications of static verification technology can verify SoC connectivity correctness and completeness and help isolate differences between two disparate versions of the RTL design.
 
-### Static Verification Umbrella[^5]
+### Static verification umbrella[^5]
 
-1. Static formal verification (i.e., see that a piece of logic does not fail under any given input condition, and do this statically without the need for input simulation vectors). Note: This type of verification is also known as model checking, static functional verification, or property checking. 
+1. **Static formal verification** (i.e., see that a piece of logic does not fail under any given input condition, and do this statically without the need for input simulation vectors). Note: This type of verification is also known as model checking, static functional verification, or property checking. 
 2. **Static formal plus simulation hybrid verification.** 
 3. Logic Equivalence Check (LEC). This is where you formally (i.e., without vectors) check the following for equivalency:
    1. RTL ⇔ RTL (critical path optimization, for example) 
@@ -82,7 +82,7 @@ Additional applications of static verification technology can verify SoC connect
 
 ### Pros and cons of formal verification[^4]
 
-Model checking is a very powerful framework for verifying specifications of finite state systems. One of the main advantages of model checking is that it is **fully automated**. No expert is required in order to check whether a given finite-state model conforms to a given set of system specifications. Model checking also works with **partial specifications**, which are often troublesome for techniques based on theorem proving. When a property specification does not hold, a model checker can provide a counterexample (an initial state and a set of transitions) that reflects an actual execution leading to an error state. This is the reason why tools based on model checking are very popular for debugging.
+Model checking is a very powerful framework for verifying specifications of <u>finite state systems</u>. One of the main advantages of model checking is that it is **fully automated**. No expert is required in order to check whether a given finite-state model conforms to a given set of system specifications. Model checking also works with **partial specifications**, which are often troublesome for techniques based on theorem proving. When a property specification does not hold, a model checker can provide a counterexample (an initial state and a set of transitions) that reflects an actual execution leading to an error state. This is the reason why tools based on model checking are very popular for debugging.
 
 One aspect that can be viewed as negative is that model checkers **do not provide correctness proofs**. Another negative aspect is that **model-checking techniques can be directly applied only to finite-state systems**. An infinite-state system can by abstracted into a finite model; however, this leads to a loss of precision. Perhaps the most important issue in model checking is **the state-explosion problem**. It is apparent from the complexity of the CTL model checking algorithm that its practical usefulness critically depends on the size of the state space. If the number of states is too large, then the complexity of the verification procedure may render the technique unusable.
 
@@ -93,14 +93,15 @@ One aspect that can be viewed as negative is that model checkers **do not provid
 3. The static formal tool mathematically derives a model for your RTL logic under test.
 4. It applies all possible “stimuli” in combinational and sequential domain. It verifies that the property does not fail under any circumstance. It exercises all possible “logic cones” of a given logic block and proves that the assertion(s) are not violated.
 5. If the property/assertion fails, it will give the exact scenario under which the
-  property fails. You can then **simulate this scenario and debug the error at hand**.
+    property fails. You can then **simulate this scenario and debug the error at hand**.
 
 ### Limitations of formal verification in some situations
 
-#### Missed corner cases[^1]
+**As upper introduces, formal verification based on mathematical transformation, and will be automatically test by the software. The former requires an accurate mathematical model with suitable abstract level, while the later requires finite states.**
 
-With the recent trend of parallel processing units, raises the possibility of missed corner cases
-that simulation technologies have trouble analyzing. Although formal verification is well suited for finding corner case design bugs, current formal verification technologies are only powerful enough to verify small designs. It is still unknown how to apply formal verification consistently to **larger designs or find corner cases that result from the interaction of multiple modules**. Although there have been successes in using formal verification in verifying large high level designs, the verification methodology successes are time consuming and specific to a particular design.
+#### Missed corner cases in large modules[^1]
+
+With the recent trend of parallel processing units, raises the possibility of missed corner cases that simulation technologies have trouble analyzing. Although formal verification is well suited for finding corner case design bugs, current formal verification technologies are only powerful enough to verify <u>small designs</u>. It is still unknown how to apply formal verification consistently to **larger designs or find corner cases that result from the interaction of multiple modules**. Although there have been successes in using formal verification in verifying large high level designs, the verification methodology successes are time consuming and specific to a particular design.
 
 #### The gap between an abstract model and a concrete model[^1]
 
@@ -141,6 +142,14 @@ Also, the debug method based on the hardware emulation and acceleration is not a
 Solution:
 
 + Emulators like Palladium can provide some visible debugging information and trigger the signal by adding those information into the model. However, writing the model, per se, is quite tough.
+
+## Summary
+
+Formal verification fits well in small modules with finite states, hence at the begining of one project, we're supposed to utilize formal verification or a hybrid with simulation.
+
+With the states of the circuits growing, a CRV based verification is needed to verify the control logic and interconnections.
+
+Emulation might be needed in high clock frequency situations, i.e., emulating seconds or even minutes in real circuits, which is near impossible using simutation. 
 
 [^1]: J. C. Chang, “Formal Veriﬁcation Along with Design for Transactional Models,” UCB.
 [^2]: S. P. R, “PSS – Portable Test and Stimulus Standard,” Maven Silicon, Mar. 24, 2020. https://www.maven-silicon.com/blog/portable-test-and-stimulus-standard/ (accessed Jan. 11, 2021).
