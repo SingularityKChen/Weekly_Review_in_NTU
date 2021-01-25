@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "[Glean] Turning Tax"
-description: "Turning Tax is a term taught in the advanced computer architecture by Paul H J Kelly at IC London. It describes the overhead (performance, cost, or energy) of the universality of the universal computing devices. It can be coused by instructions, data routing, register access and configurable ALU, where we can reduce the Turning Tax."
+description: "Turning Tax is a term taught in the advanced computer architecture by Paul H J Kelly at IC London. It describes the overhead (performance, cost, or energy) of the universality of the universal computing devices. It can be caused by instructions, data routing, register access and configurable ALU, where we can reduce the Turning Tax."
 categories: [Glean]
 tags: [Turing Tax, Computer Architecture]
 last_updated: 2021-01-24 11:47:00 GMT+8
-excerpt: "Turning Tax is a term taught in the advanced computer architecture by Paul H J Kelly at IC London. It describes the overhead (performance, cost, or energy) of the universality of the universal computing devices. It can be coused by instructions, data routing, register access and configurable ALU, where we can reduce the Turning Tax."
+excerpt: "Turning Tax is a term taught in the advanced computer architecture by Paul H J Kelly at IC London. It describes the overhead (performance, cost, or energy) of the universality of the universal computing devices. It can be caused by instructions, data routing, register access and configurable ALU, where we can reduce the Turning Tax."
 redirect_from:
   - /2021/01/24/
 ---
