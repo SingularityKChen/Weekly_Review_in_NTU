@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "[Glean] Tomasulo Algorithm"
-description: "Tomasulo Algorithm eliminate three kinds of hazard RAW, WAR and WAW hazards by forwarding and renaming. The three stages of this algotithm are issue, execute and write back."
+description: "Tomasulo Algorithm eliminate three kinds of hazard RAW, WAR and WAW hazards by forwarding and renaming. The three stages of this algorithm are issue, execute and write back."
 categories: [Glean]
 tags: [Computer Architecture, Tomasulo, Renaming, Forwarding]
 last_updated: 2021-01-24 13:31:00 GMT+8
-excerpt: "Tomasulo Algorithm eliminate three kinds of hazard RAW, WAR and WAW hazards by forwarding and renaming. The three stages of this algotithm are issue, execute and write back."
+excerpt: "Tomasulo Algorithm eliminate three kinds of hazard RAW, WAR and WAW hazards by forwarding and renaming. The three stages of this algorithm are issue, execute and write back."
 redirect_from:
   - /2021/01/24/
 ---
@@ -71,6 +71,8 @@ K: mul r6,r1,r7
 It can be also eliminated by Tomasulo Algorithm using register renaming.[^2]
 
 ## Hardware for Tomasulo Algorithm
+
+![Tomasulo without Re-order Buffer](https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20210125145409.png)
 
 + Instruction fetch queue
 + Float Point Registers: contains either values or tags. The tag means where the results of this register will come from. If the tag is null, then the value is valid.

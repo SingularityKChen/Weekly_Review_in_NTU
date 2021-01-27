@@ -109,17 +109,48 @@ The other usage of formal verification is for quick verification of protocol ide
 
 Bridging the gap between an abstract model and a concrete model is a problem recognized by the formal verification community even before ESL research has came onto the scene. This is because **formal verification requires abstract models in order to make verification possible**, and it is suggested that the correspondence between the abstract models and implementation can be verified through refinement techniques. However, **all these techniques only work well for layers that are close to each other in terms of abstraction level**, and there is still no practical way to link formally solvable abstract model to the RTL implementation at this time.
 
-## Hardware/Software Co-verification Using Virtual Platform with Hardware Emulation and Acceleration[^5]
+## Hardware/Software Co-verification Using Virtual Platform with Hardware Emulation and Acceleration
+
+### Introduction to Hardware/Software Co-verification
+
+**Hardware/Software Co-verification is a methodologies to develop software such that it is ready when hardware is ready to ship**.[^5] An SoC is ready to ship only when the complete application works, not just when hardware simulations pass regressions.
+
+This means executing the <u>embedded software together with the RTL</u>. Such tests require <u>billions of cycles of execution</u> and usually run at the system level, where design size is the greatest.[^5]
+
+Virtual platform in the following can be virtual platform of the peripheral interfaces of an SoC, or it can be an ISS (Instruction Set Simulator), or it
+can be a virtual platform with embedded ISS:
+
+1. Virtual platform ⇔ RTL co-simulation.
+2. Same arguments apply for RTL ⇔ emulation co-simulation. 
+3. Virtual platform ⇔ emulation. 
+4. Virtual platform ⇔ hardware accelerator.
+5. Prototype FPGA board.
+
+![Different types of hardware/software co-verification configurations](https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/20210127164713.png)
+
+The figure shows all methodologies but the co-simulation (signal level) is not a practical methodology for software development. This is true for the “simulation” methodology. It will be too slow for hardware/software co-simulation. <u>You would run software/hardware co-emulation, and if there is a bug, you can switch to “simulation- only” mode; run a very small snippet of code which found the bug and then debug with full visibility into your design.</u>
+
+#### Hardware/Software Co-verification Using Virtual Platform with Hardware Accelerator
+
+Accelerator is the technology product that speeds up software simulation by orders of magnitude.
+
+Mentor, Synopsys, and Cadence offer hardware products that allow for emulation and acceleration from the same “box.” In acceleration mode, the difference is you get excellent visibility into RTL. This allows for quick debug and turnaround time. Emulation is getting there when it comes to debug but cannot provide full visibility into RTL as acceleration does. <u>Acceleration runs in KHz, while Emulation runs in MHz.</u>
+
+The emulator provided by Cadence named Palladium[^6], it contains a large number of simple processors, each of which simulates a small portion of the design, and then they pass the results between them.
+
+Mentor provides Veloce which is based on custom solutions or off-the-shelf solutions. With custom solutions, there is going to be an FPGA-like structure somewhere in the device. The custom chip could also contain debug circuitry, visibility mechanisms, and a host of other capabilities
+
+#### Hardware Emulation and Prototyping
+
+Hardware emulation is the process in which a piece of hardware is made to <u>emulate the behavior of one or more other hardware system under design.</u> Hardware emulation is a technique that integrates a hardware design into a reconfigurable (e.g., FPGA-based) <u>prototyping platform</u> to allow the functional testing of a design under test <u>including its firmware</u>.[^5]
 
 Emulation is the verification method between the simulation and the FPGA prototype, which is faster than the simulation and able to provide more details than the FPGA prototype.
-
-The emulator provided by Cadence named Palladium[^6], which could execute both the synthesizable RTL design and behavior test bench model.
 
 ### Limitations of emulation in some situations
 
 #### Slow to compile
 
-One of the factors that affect selection of an emulation system is the compile (synthesis) times to put RTL into the box. What good does it do for emulation to provide results in minutes while compile times take hours. **Hardware emulators can accommodate any design size, but they require a long setup time and are relatively slow to compile, compared to simulation.** 
+One of the factors that affect selection of an emulation system is the compile (synthesis) times to put RTL into the box. What good does it do for emulation to provide results in minutes while compile times take hours. **Hardware emulators can accommodate any design size, but they require a long setup time and are relatively slow to compile, compared to simulation.** [^5]
 
 <u>**However, in some cases, it takes weeks to run the simulation but minutes to execute it in the hardware platform. Therefore, its worthy to waiting for the compiling results.**</u> So it's suit for the deign which is too slow to simulate tens of seconds clock cycles.
 
@@ -145,11 +176,11 @@ Solution:
 
 ## Summary
 
-Formal verification fits well in small modules with finite states, hence at the begining of one project, we're supposed to utilize formal verification or a hybrid with simulation.
+Formal verification fits well in small modules with finite states, hence at the beginning of one project, we're supposed to utilize formal verification or a hybrid with simulation.
 
 With the states of the circuits growing, a CRV based verification is needed to verify the control logic and interconnections.
 
-Emulation might be needed in high clock frequency situations, i.e., emulating seconds or even minutes in real circuits, which is near impossible using simutation. 
+Emulation might be needed in high clock frequency situations, i.e., emulating seconds or even minutes in real circuits, which is near impossible using simulation. 
 
 [^1]: J. C. Chang, “Formal Veriﬁcation Along with Design for Transactional Models,” UCB.
 [^2]: S. P. R, “PSS – Portable Test and Stimulus Standard,” Maven Silicon, Mar. 24, 2020. https://www.maven-silicon.com/blog/portable-test-and-stimulus-standard/ (accessed Jan. 11, 2021).
