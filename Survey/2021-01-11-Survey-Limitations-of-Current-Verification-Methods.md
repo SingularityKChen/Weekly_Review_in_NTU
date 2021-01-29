@@ -3,7 +3,7 @@ layout: post
 title: "[Survey] Current Verification Methods And Their Limited Situations"
 description: "This post introduces the current verification methods, steps and their limitations, including formal verification, constrained random verification (CRV) and hardware-software co-verification using virtual platform with hardware emulation and acceleration."
 categories: [Survey]
-tags: [verification, formal, CRV, co-verification]
+tags: [Verification, Formal, CRV, Co-Verification]
 last_updated: 2021-01-24 23:37:00 GMT+8
 excerpt: "This post introduces the current verification methods, steps and their limitations, including formal verification, constrained random verification (CRV) and hardware-software co-verification using virtual platform with hardware emulation and acceleration."
 redirect_from:
