@@ -48,7 +48,7 @@ alias rdlk="greadlink -f"
 
 ```bash
 alias ls="ls -G"
-alias cddd="cd ../../
+alias cddd="cd ../../"
 alias cddn="cd .." 
 alias cdd="cd ../; ls"
 alias CDD="cdd"
