@@ -4,7 +4,7 @@ title: "[Tutorial] Configure and Run Pulpissimo"
 description: "From install gcc and SDK to Run simple runtime examples for Pulpissimo"
 categories: [Tutorial]
 tags: [Pulpissimo, Pulp]
-last_updated: 2020-12-29 21:06:00 GMT+8
+last_updated: 2021-03-04 17:40:00 GMT+8
 excerpt: "From install gcc and SDK to Run simple runtime examples for Pulpissimo"
 redirect_from:
   - /2020/12/20/
@@ -188,11 +188,11 @@ Setting up for RTL simulation
 Setting up VSIM
 ```
 
-Then you need to rebuild the RTL simulation platform and you'll get the `sourceme.sh`:
+Then you need to rebuild the SKD and you'll get the `sourceme.sh`:
 
 ```bash
-source setup/vsim.sh
-make build
+cd pulp-sdk
+make all
 ```
 
 Otherwise it will say:
