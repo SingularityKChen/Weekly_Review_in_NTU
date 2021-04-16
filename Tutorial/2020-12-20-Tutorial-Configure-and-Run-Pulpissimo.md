@@ -1,18 +1,18 @@
 ---
 layout: post
-title: "[Tutorial] Configure and Run Pulpissimo"
-description: "From install gcc and SDK to Run simple runtime examples for Pulpissimo"
+title: "[Tutorial] Configure and Run PULPissimo"
+description: "From install gcc and SDK to Run simple runtime examples for PULPissimo"
 categories: [Tutorial]
 tags: [Pulpissimo, Pulp]
-last_updated: 2021-03-04 17:40:00 GMT+8
-excerpt: "From install gcc and SDK to Run simple runtime examples for Pulpissimo"
+last_updated: 2021-04-16 12:23:00 GMT+8
+excerpt: "From install gcc and SDK to Run simple runtime examples for PULPissimo"
 redirect_from:
   - /2020/12/20/
 ---
 
 * Kramdown table of contents
 {:toc .toc}
-# Configure and Run Pulpissimo
+# Configure and Run PULPissimo
 
 ## Install Pulp GCC tool-chain and SDK
 
@@ -130,7 +130,7 @@ It will download all the related submodules.
 make pulp-runtime
 ```
 
-### Configure environment for Pulpissimo
+### Configure environment for PULPissimo
 
 ```bash
 cd pulp-runtime
@@ -224,3 +224,47 @@ make run vsim/script=export_run.tcl
 However, I found that it's quite slow to generate the `.vcd` file and open it using `gtkwave`.
 
 Therefore, you can use the GUI to simulate and monitor the waveform.
+
+### Run Simulations after first build
+
+After you first build all the environment, you also need to source some files before you execute your simulation again.
+
+#### Export environment variables (Optional)
+
+You need to check whether you have the following environment variables for toolchain:
+
+```bash
+export PULP_RISCV_GCC_TOOLCHAIN=$RISCV
+export PATH=$PATH:$RISCV/bin
+export VSIM_PATH=$PULP/pulpissimo/sim
+```
+
+#### Select targets for this simulation (Important)
+
+```bash
+cd pulp-sdk
+# Target select
+source configs/pulpissimo.sh
+# Platform select
+source configs/platform-rtl.sh
+# SDK setup
+source pkg/sdk/dev/sourceme.sh
+
+# RTL setup
+cd pulpissimo
+source setup/vsim.sh
+```
+
+#### Update RTL (Optional)
+
+If you changed your RTL, you need to rebuild your RTL.
+
+```bash
+cd pulpissimo
+./generate-scripts
+make clean build
+```
+
+#### Compile and execute new C file
+
+Just the same as in `Run hellow`.
