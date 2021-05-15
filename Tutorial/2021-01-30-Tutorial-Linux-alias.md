@@ -4,7 +4,7 @@ title: "[Tutorial] Linux aliases"
 description: "Some useful Linux aliases."
 categories: [Tutorial]
 tags: [Linux, alias]
-last_updated: 2021-01-30 21:40:00 GMT+8
+last_updated: 2021-05-15 14:58:00 GMT+8
 excerpt: "Some useful Linux aliases."
 redirect_from:
   - /2021/01/30/
@@ -46,8 +46,11 @@ alias rdlk="greadlink -f"
 
 ## My aliases
 
+Put these at `~/.bash_aliases`:
+
 ```bash
-alias ls="ls -G"
+alias editalias="v ~/.bash_aliases"
+#alias ls="ls -color=always"
 alias cddd="cd ../../"
 alias cddn="cd .." 
 alias cdd="cd ../; ls"
@@ -74,6 +77,7 @@ alias rdlk="readlink -f"
 alias grep="grep --color -n"
 alias jpnb="jupyter notebook"
 alias idea="intellij-idea-ultimate"
-alias editalias="v ~/.bash_aliases"
-alias genIdea="mill -i mill.contrib.BSP/install"
+# for mill
+alias genIdea="rm -rf out .idea && mill mill.scalalib.GenIdea/idea"
 ```
+

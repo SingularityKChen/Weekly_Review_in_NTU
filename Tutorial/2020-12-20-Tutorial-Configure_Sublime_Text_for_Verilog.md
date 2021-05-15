@@ -31,7 +31,7 @@ sudo apt-get install sublime-text
 
 [This](https://zhuanlan.zhihu.com/p/33443736) commends three plugins:
 
-+  `SystemVeriog`: syntax highlights.
++  `SystemVerilog`: syntax highlights.
 
 + `VerilogGadget`: helps to generate a simple testbench, instantiate a module, insert a  user-header, repeat codes with formatted incremental/decremental  numbers, etc.
 
