@@ -106,15 +106,19 @@ When this option is specified with the **-group** option, signals and the specif
 Show the two-dimensional (2D) memory array evaluated (not in simulator-dumped FSDB) by Verdi on *nWave*. This option is only for 2D array.
 
 `-pw fullSignalName`
+
 Specify the runtime power state signal to be added and evaluated.
 
 `-risingDelay delay timescale`
+
 Specify the delay and time scale for rising edge.
 
 `-scope fullScopeName`
+
 Specify the scope where signals are added from.
 
 `-sdfSignal localName`
+
 Specify the local name for the shifted signal.
 
 `-shiftSignal signal` 
@@ -126,9 +130,11 @@ Specify the signal to shift.
 Specify the signal to add into the current position with the `-color`, `-shiftSignal`, `-sdfSignal`, `-risingDelay`, and `-fallingDelay` attributes, if any are specified.
 
 `-sn fullSignalName `
+
 Specify the inserted signal as the runtime power supply net signal to be evaluated.
 
 `–ss fullSignalName`
+
 Specify the power supply set signal to be added and evaluated.
 
 `-type input|output|inout|net|register|other`
@@ -140,6 +146,7 @@ Specify the type of signals to be added in the selected scope. The types are **i
 Specify the full variable signal name.
 
 `-win window`
+
 Specify the window ID of the invoking *nWave* window.
 
 **Value Returned**
