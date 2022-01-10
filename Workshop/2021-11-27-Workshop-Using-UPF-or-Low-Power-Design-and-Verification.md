@@ -151,7 +151,8 @@ In UPF:
 ![UPF - Power Domains](https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/202112091129294.png)
 
 ```tcl
-set_scope Sub create_power_domain PD_Sub \
+set_scope Sub
+create_power_domain PD_Sub \
     -include_scope
 create_power_domain PD_Proc1 \
     -elements {P1}
@@ -266,11 +267,17 @@ add_power_state PD_Mem \
     -state OFF {-logic_expr {primary == OFF}}
 add_power_state PD_Proc \
     -state Normal { \
-        -logic_expr {primary == ON_10 && \ memory == ON_08 && \ PD_Mem == RUN} } \
+        -logic_expr {primary == ON_10 && \ 
+                     memory == ON_08 && \ 
+                     PD_Mem == RUN} } \
     -state Sleep { \ 
-        -logic_expr {primary == OFF && \ memory == ON_08 && \ PD_Mem == RUN} } \
+        -logic_expr {primary == OFF && \ 
+                     memory == ON_08 && \ 
+                     PD_Mem == RUN} } \
     -state Hibernate { \ 
-        -logic_expr {primary == OFF && \ memory == OFF && \PD_Mem == OFF} }
+        -logic_expr {primary == OFF && \ 
+                     memory == OFF && \
+                     PD_Mem == OFF} }
 ```
 
 |  PD_PROC  | primary | memory | PD_MEM |
