@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "[Glean] Package hyperref: Token not allowed"
-description: "Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):(hyperref). Using \texorpdfstring to solve this."
+description: "Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):(hyperref). Using texorpdfstring to solve this."
 categories: [Glean]
 tags: [Latex]
 last_updated: 2022-05-15 16:31:00 GMT+8
-excerpt: "Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):(hyperref). Using \texorpdfstring to solve this."
+excerpt: "Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):(hyperref). Using texorpdfstring to solve this."
 redirect_from:
   - /2022/05/15/
 ---

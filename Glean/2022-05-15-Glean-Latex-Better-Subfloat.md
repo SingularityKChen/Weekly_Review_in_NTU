@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "[Glean] A better way to apply subfloat"
-description: "Simply wrapper the \includegraphics with \makebox to adjust the width of the caption and image separately."
+description: "Simply wrapper the includegraphics with makebox to adjust the width of the caption and image separately."
 categories: [Glean]
 tags: [Latex, Subfloat]
 last_updated: 2022-05-15 16:52:00 GMT+8
-excerpt: "Simply wrapper the \includegraphics with \makebox to adjust the width of the caption and image separately."
+excerpt: "Simply wrapper the includegraphics with makebox to adjust the width of the caption and image separately."
 redirect_from:
   - /2022/05/15/
 ---
