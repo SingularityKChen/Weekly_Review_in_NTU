@@ -29,7 +29,7 @@ Please try to search in your browser or ask ChatGPT how to install Docker in you
 
 ### Run Test
 
-Based on [the CI file](https://github.com/chipsalliance/playground/blob/c92d6127e537037cc8106cfe90cacc2a3889315f/.github/workflows/bump.yml), the test should be executed in Arch Linux.
+Based on [the CI file](https://github.com/chipsalliance/playground/blob/c92d6127e537037cc8106cfe90cacc2a3889315f/.github/workflows/bump.yml), the test should be executed in **Arch Linux**.
 
 ```bash
 git clone https://github.com/chipsalliance/playground.git
@@ -37,24 +37,27 @@ cd playground
 # init and update all the repos
 make init bump update-patches patch
 cd ../
-docker run -it --rm -v playground:/workspace/playground singularitykchen/playground:dev_latest --workdir /workspace/playground
+docker run -it --rm -v playground:/workspace/playground --workdir /workspace/playground singularitykchen/playground:dev_latest
 ```
 
 In your Docker:
+
 ```bash
 make compile test
 ```
 
 ## [Rocket Chip](https://github.com/chipsalliance/rocket-chip)
 
-Based on [the CI file](https://github.com/chipsalliance/rocket-chip/blob/0e4af6df500287d7ea0e934d99197e162da69855/.github/workflows/mill-ci.yml),
+Based on [the CI file](https://github.com/chipsalliance/rocket-chip/blob/0e4af6df500287d7ea0e934d99197e162da69855/.github/workflows/mill-ci.yml), Rocket-Chip regression test works well on Ubuntu and Nix OS.
 
 There are three types of CI tests:
+
 + `emulator`
 + `riscv-tests`
 + `riscv-arch-test`
 
 Only the first one don't need `RISCV` variable. For other two, you need to execute the following command based on [this CI file](https://github.com/chipsalliance/rocket-chip/blob/0e4af6df500287d7ea0e934d99197e162da69855/.github/workflows/continuous-integration.yml):
+
 ```bash
 # install tools and set environment
 make tools -C regression SUITE=none
