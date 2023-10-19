@@ -60,7 +60,7 @@ Then we restart the Idea.
 After the bsp file is generated, we can open the project in the Dev Container again.
 Then we can import the bsp file for Chisel development.
 
-You may either [search for the **Project from Existing Sources** action or select **File | New | Project (Module) from Existing Sources**.](https://www.jetbrains.com/help/idea/bsp-support.html#import_bsp)
+You may either [search for the **Project from Existing Sources** action or select **File > New > Project (Module) from Existing Sources**.](https://www.jetbrains.com/help/idea/bsp-support.html#import_bsp)
 
 <img src="https://raw.githubusercontent.com/SingularityKChen/PicUpload/master/img/devcontainer_import.png" alt="Select file" style="zoom:50%;" />
 
