@@ -46,7 +46,7 @@ Floating-Point 32-bit
 - 8 bit exponent
 - 23 bit mantissa
 
-### TF32 (19 bit)
+### TF32 (19 bit) [^1]
 
 TensorFloat 19-bit
 
@@ -122,4 +122,4 @@ Unsigned Integer 8-bit
 
 # References
 
-- [What is the TensorFloat-32 Precision Format? | NVIDIA Blog](https://blogs.nvidia.com/blog/tensorfloat-32-precision-format/)
+[^1]: [What is the TensorFloat-32 Precision Format? - NVIDIA Blog](https://blogs.nvidia.com/blog/tensorfloat-32-precision-format/)
