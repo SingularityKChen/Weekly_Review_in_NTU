@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "[Glean] Count the number of occurrences of a pattern in a file in Vim"
+title: "[Tutorial] Count the number of occurrences of a pattern in a file in Vim"
 description: "Count the number of occurrences of a pattern in a file in Vim."
-categories: [Glean]
+categories: [Tutorial]
 tags: [Vim, Regex]
 last_updated: 2024-04-18 9:43:00 GMT+8
 excerpt: "Count the number of occurrences of a pattern in a file in Vim."
@@ -14,8 +14,6 @@ redirect_from:
 {:toc .toc}
 
 # Count the number of occurrences of a pattern in a file in Vim
-
-#vim #regex
 
 ```vim
 :%s/pattern//gn

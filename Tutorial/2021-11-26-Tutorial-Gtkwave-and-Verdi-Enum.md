@@ -63,7 +63,8 @@ proc signalShowString {signals fileFilter} {
 Add signals to the *nWave* window. 
 
 **Syntax**
-```
+
+```tcl
 wvAddSignal [-win *window*] [-delim *delim*] [-clear] {*signalName* [-color *color*] | [-shiftSignal *signal*] [-sdfSignal *localName*] [-risingDelay *delay timescale* -fallingDelay *delay timescale*]} | {-group {*groupName* {*signalName* [-color *color*]}}} [-scope *scopeName*]
 wvAddSignal [-win *window*] [-delim *delim*] {-v *variableFullName*} wvAddSignal [-win *window*] [-delim delim] {-pw *fullSignalName*} wvAddSignal [-win *window*] [-delim *delim*] -scope *fullScopeName* wvAddSignal [-win *window*] [-delim *delim*] -scope *fullScopeName* [-type input|output|inout|net|register|other]
 wvAddSignal [-win *window*] "-mem *2DMemoryArray*"

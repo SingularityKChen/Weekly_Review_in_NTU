@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "[Glean] Schedule Command for CentOS using `crontab`"
+title: "[Tutorial] Schedule Command for CentOS using `crontab`"
 description: "Schedule command for CentOS using `crontab`, including crontab syntax, examples, output, and environment variables."
-categories: [Glean]
+categories: [Tutorial]
 tags: [Linux, CentOS, Crontab]
 last_updated: 2024-07-31 11:51:00 GMT+8
 excerpt: "Schedule command for CentOS using `crontab`, including crontab syntax, examples, output, and environment variables."
