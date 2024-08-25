@@ -3,7 +3,7 @@ layout: post
 title: "[Tutorial] Config CentOS 8 Server in 2022"
 description: "Config CentOS 8 Server in 2022"
 categories: [Tutorial]
-tags: [CentOS8]
+tags: [Linux, CentOS8, CentOS]
 last_updated: 2022-11-02 23:23:00 GMT+8
 excerpt: "Config CentOS 8 Server in 2022"
 redirect_from:

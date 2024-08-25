@@ -3,7 +3,7 @@ layout: post
 title: "[Tutorial] Build SystemC Environment"
 description: "How to Build SystemC Environment in Windows and Linux Ubuntu."
 categories: [Tutorial]
-tags: [SystemC]
+tags: [SystemC, C++, CLion, Ubuntu, Windows]
 last_updated: 2020-06-23 22:02:00 GMT+8
 excerpt: "How to Build SystemC Environment in Windows and Linux Ubuntu."
 redirect_from:

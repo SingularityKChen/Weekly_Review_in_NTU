@@ -81,7 +81,7 @@ int main() {
 We summarize the function execution spaces in CUDA C++ in the following table:
 
 | Execution Space | Description | Callable from Host | Callable from Device | Executed on Host | Executed on Device |
-| :---: | :--- | :---: | :---: | :---: | :---: |
+| :---: | :---: | :---: | :---: | :---: | :---: |
 | `__global__` | Kernel | Yes | Yes | No | Yes |
 | `__device__` | Device | No | Yes | No | Yes |
 | `__host__` | Host | Yes | No | Yes | No |

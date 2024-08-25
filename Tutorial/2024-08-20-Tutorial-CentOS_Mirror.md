@@ -3,7 +3,7 @@ layout: post
 title: "[Tutorial] Updating CentOS 7 Mirror to Aliyun"
 description: "Updating the CentOS 7 mirror to the Aliyun mirror, including updating the CentOS 7 mirror configuration file and updating the mirror cache."
 categories: [Tutorial]
-tags: [Linux, CentOS]
+tags: [Linux, CentOS, CentOS7]
 last_updated: 2024-08-20 18:10:00 GMT+8
 excerpt: "Updating the CentOS 7 mirror to the Aliyun mirror, including updating the CentOS 7 mirror configuration file and updating the mirror cache."
 redirect_from:
